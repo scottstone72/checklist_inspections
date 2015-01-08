@@ -1,0 +1,134 @@
+@import 'bootstrap.less';
+@import 'variables.less';
+
+// This fix is for Bootstrap radio and checkbox buttons
+[data-toggle="buttons"] > .btn > input[type="radio"],
+[data-toggle="buttons"] > .btn > input[type="checkbox"] {
+  clip: rect(1px, 1px, 1px, 1px);
+  pointer-events: none;
+}
+
+/* This bit of css is for disabling the ajax throbber */
+.ajax-progress, .ajax-progress-throbber {
+  display: none;
+}
+
+.region.region-content.well {
+  background-color: #9d8d6b;
+}
+
+.region-content {
+  .make-row();
+}
+
+#checklist-inspect-form {
+
+  .page-description {
+    margin-bottom: 10px;
+  }
+
+  .order-num {
+    .make-sm-column(3);
+    .make-md-column(3);
+    .make-lg-column(3);
+  }
+
+  .checklist-message {
+    #satisfactory {
+      color: darken(@btn-success-bg, 10%);
+    }
+
+    #deficient {
+      color: darken(@btn-danger-bg, 5%);
+    }
+
+    #NA {
+      color: lighten(@component-active-bg, 5%);
+
+    }
+  }
+
+  .ratings-container {
+    margin-bottom: 5px;
+
+    .panel-body {
+      padding-bottom: 5px;
+      padding-top: 5px;
+    }
+
+    .text-box {
+      .make-lg-column(6);
+      margin-bottom: 2px;
+      margin-left: 10px;
+    }
+
+    .radio-buttons {
+      padding-left: 20px;
+      padding-bottom: 5px;
+    }
+  }
+
+  fieldset#edit-container {
+    border: none;
+
+    h2, h3 {
+      text-align: center;
+    }
+
+    h2{
+      font-size: 1.3em;
+    }
+
+    h3 {
+      margin-top: 5px;
+      color: #d36a00;
+      font-size: 1em;
+    }
+  }
+
+  .date-submitted,
+  .category,
+  #unit_id_select_wrapper
+  {
+//    .make-xs-column(3);
+    .make-sm-column(3);
+    .make-md-column(3);
+    .make-lg-column(3);
+  }
+
+  .inspected-by {
+//    .make-xs-column(3);
+    .make-sm-column(4);
+    .make-md-column(4);
+    .make-lg-column(4);
+  }
+
+  .checklist-message {
+    .make-lg-column(8);
+    margin-top: 35px;
+  }
+
+  .follow-up-container, #submit-button {
+    .make-lg-column(4);
+  }
+
+  #submit-button {
+    margin-top: 32px;
+  }
+
+  .btn-default {
+    .btn-danger;
+  }
+
+  .satisfactory {
+    background-color: @btn-success-bg;
+//    border: 1px solid @btn-success-border;
+  }
+
+  .deficient {
+    background-color: @btn-danger-bg;
+//    border: 1px solid @btn-danger-border;
+
+  }
+
+}

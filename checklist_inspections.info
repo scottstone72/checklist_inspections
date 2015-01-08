@@ -1,0 +1,15 @@
+name = Checklist Inspections
+description = Inspection checklists for rental equipment items.
+core = 7.x
+version = v2.0
+
+files[] = checklist_inspections.module
+files[] = checklist_inspections.install
+files[] = checklist_inspections.inc
+files[] = checklist_inspections.print.inc
+files[] = checklist_inspections.approvals.inc
+files[] = checklist_inspections.approval.print.inc
+files[] = checklist_inspections.open.inc
+files[] = checklist_inspections.open.print.inc
+files[] = checklist_inspections.archive.inc
+files[] = checklist_inspections.archive.print.inc

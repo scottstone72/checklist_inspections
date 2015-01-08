@@ -1,0 +1,114 @@
+<?php
+
+/*
+ * Implements hook_schema().
+ */
+function checklist_inspections_schema() {
+  $schema = array();
+  $schema['checklist_inspections'] = array(
+    'description' => 'This table is for storing Checklist Inspection Forms.',
+    'fields' => array(
+      'order_num' => array(
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => t("Checklist Inspections Order # and our unique ID."),
+      ),
+      'category' => array(
+        'description' => 'Equipment Category.',
+        'type' => 'varchar',
+        'length' => '64',
+        'not null' => TRUE,
+      ),
+      'unit_id' => array(
+        'description' => 'Unit Id of item.',
+        'type' => 'varchar',
+        'length' => '64',
+        'not null' => TRUE,
+      ),
+      'nid' => array(
+        'description' => 'NID of item.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'approved' => array(
+        'description' => 'Has been approved by admin.',
+        'type' => 'varchar',
+        'length' => '64',
+        'not null' => FALSE,
+      ),
+      'completed' => array(
+        'description' => 'Has been completed.',
+        'type' => 'varchar',
+        'length' => '64',
+        'not null' => FALSE,
+      ),
+      'inspected_by' => array(
+        'description' => 'User who did inspection.',
+        'type' => 'varchar',
+        'length' => '64',
+        'not null' => TRUE,
+      ),
+      'comments' => array(
+        'description' => 'Users comments.',
+        'type' => 'varchar',
+        'length' => '1024',
+        'not null' => TRUE,
+      ),
+      'repair_data' => array(
+        'description' => 'Repair data field values serialized.',
+        'type' => 'text',
+        'not null' => TRUE,
+      ),
+	  'repair_archive' => array(
+		'description' => 'Repair data field values serialized, used for archive page.',
+		'type' => 'text',
+		'not null' => TRUE,
+	  ),
+      'date_submitted' => array(
+        'description' => 'Date the item was submitted.',
+        'type' => 'varchar',
+        'length' => '64',
+        'not null' => TRUE,
+      ),
+      'follow_up_alert' => array(
+        'description' => 'Date the item should be followed up.',
+        'type' => 'varchar',
+        'length' => '64',
+        'not null' => TRUE,
+      ),
+      'admin_notes' => array(
+        'description' => 'Administrator Notes.',
+        'type' => 'varchar',
+        'length' => '1024',
+        'not null' => FALSE,
+      ),
+      'admin_approver' => array(
+        'description' => 'Administrator who approved order.',
+        'type' => 'varchar',
+        'length' => '64',
+        'not null' => FALSE,
+      ),
+      'time_stamp' => array(
+        'description' => 'Timestamp.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('order_num'),
+    'indexes' => array(
+      'unit_id' => array('unit_id', 'nid'),
+    ),
+  );
+
+  return $schema;
+}
+
+/*
+ * Implements hook_update_N().
+ */
+function checklist_inspections_update_7000() {
+  drupal_install_schema('checklist_inspections');
+}

@@ -1,0 +1,239 @@
+@import 'bootstrap.less';
+@import 'variables.less';
+@import "overrides";
+
+#footer,
+#page-header {
+  display: none;
+}
+
+.alert-block {
+  .hidden-print;
+}
+
+body.html.not-front.logged-in.no-sidebars.page-checklist-inspections.page-checklist-inspections-approvals.page-checklist-inspections-approvals-print.navbar-is-fixed-top.admin-menu.coffee-processed.bootstrap-anchors-processed,
+body.html.not-front.logged-in.no-sidebars.page-checklist-inspections.page-checklist-inspections-print.navbar-is-fixed-top.admin-menu.coffee-processed.bootstrap-anchors-processed,
+body.html.not-front.logged-in.no-sidebars.page-checklist-inspections.page-checklist-inspections-archive.page-checklist-inspections-archive-print.page-checklist-inspections-archive-print-.navbar-is-fixed-top.admin-menu.coffee-processed.bootstrap-anchors-processed,
+body.html.not-front.logged-in.no-sidebars.page-checklist-inspections.page-checklist-inspections-open.page-checklist-inspections-open-print.page-checklist-inspections-open-print-.navbar-is-fixed-top.admin-menu.coffee-processed.bootstrap-anchors-processed {
+  padding-top: 0 !important;
+  @media print {
+    padding-top: 0 !important;
+  }
+}
+
+.container {
+  color: #000000;
+  @media print {
+    font-size: .7em !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  #marble-top {
+    background: none;
+    @media print {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+
+    #textured {
+      background-color: #FFFFFF;
+
+      #section-container-page {
+
+        #page-section {
+          @media print {
+            margin-left: 0;
+            margin-right: 0;
+            padding-left: 0;
+            padding-right: 0;
+          }
+
+          .region-content {
+            background-color: #FFFFFF;
+            border: none;
+
+            @media print {
+              margin-left: 0;
+              margin-right: 0;
+              padding-left: 0;
+              padding-right: 0;
+            }
+
+            #company-image {
+              .center-block;
+              width: 150px;
+              height: auto;
+              margin-top: 0;
+              padding-top: 0;
+              @media print {
+                margin-top: 0;
+                padding-top: 0;
+              }
+            }
+
+            .well,
+            .panel,
+            .panel-heading {
+              background-color: #FFFFFF;
+
+              .fieldset-legend {
+                color: #000000;
+              }
+            }
+
+            #date-submitted {
+              clear: left;
+              .pull-right;
+            }
+
+
+            #order-num,
+            #inspected-by,
+            #user-instructions,
+            #comments,
+            #follow-up-alert,
+            #edit-equip-state,
+            #admin-notes,
+            #admin-approver {
+              float: left;
+              clear: left;
+            }
+
+            #link-container {
+              margin-top: 20px;
+              padding-top: 20px;
+              clear: left;
+              float: left;
+              @media print {
+                display: none;
+              }
+
+              .link-list {
+                list-style-type: none;
+                padding-left: 0;
+
+                li {
+                  .pull-left;
+                  margin-right: 25px;
+
+                  #print-link {
+                    padding-top: 20px;
+                  }
+
+                  #print-this-page:hover,
+                  a:hover.transfer-order-link,
+                  a:hover.home-link,
+                  a:hover.archive-print-link,
+                  a:hover.approval-print-link {
+                    color: #ff0000;
+                    text-decoration: underline;
+                  }
+
+                  #print-this-page {
+                    color: #d36a00;
+                    font-weight: bold;
+                    cursor: pointer;
+                  }
+                }
+              }
+            }
+
+            #inspected-by,
+            #user-instructions {
+              margin-bottom: 5px;
+            }
+
+            #checklist-title > h2 {
+              font-size: 1.3em;
+              color: #000000;
+              text-align: center;
+              margin-bottom: 5px;
+              margin-top: 5px;
+              @media print {
+                padding-bottom: 0;
+                margin-bottom: 0;
+              }
+            }
+
+            #category > h3 {
+              font-size: 1em;
+              color: #000000;
+              text-align: center;
+              margin-top: 0;
+              @media print {
+                padding-top: 0;
+              }
+            }
+
+            #unit_id > h4 {
+              font-size: 1em;
+              color: #000000;
+              text-align: center;
+              margin-top: 0;
+              @media print {
+                padding-top: 0;
+              }
+            }
+
+            .ratings-container {
+              margin-bottom: 5px;
+              clear: left;
+
+              .panel-body {
+                padding: 5px 2px 5px 10px;
+
+                .repair-title {
+                  float: left;
+                }
+
+                .status-comments {
+                  .pull-left;
+                  padding: 0;
+                  margin: 0;
+                  .stat-text {
+                    .bg-danger;
+//                    font-style: italic;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    border-radius: 3px;
+                  }
+                }
+
+                .radio-buttons-right {
+                  .pull-right;
+
+                  .repair-radio-buttons {
+                    .pull-left;
+                    margin-right: 5px;
+                    padding: 0 3px 0 3px;
+                  }
+                }
+
+                .checkbox-group {
+                  .pull-right;
+                  margin-right: 20px;
+
+                  .checkbox-values {
+                    .pull-right;
+                    margin-right: 5px;
+                    padding: 0 3px 0 3px;
+                  }
+                }
+              }
+            }
+            #comments, #user-instructions, #follow-up-alert, #admin-notes {
+              margin-top: 10px;
+            }
+
+            #admin-approver {
+              margin-top: 10px;
+              margin-bottom: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

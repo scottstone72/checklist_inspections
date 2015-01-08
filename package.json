@@ -1,0 +1,28 @@
+{
+  "name": "checklist_inspections",
+  "version": "1.0.0",
+  "description": "This is a module for a client.",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scottstone72/checklist_inspections.git"
+  },
+  "author": "Scott Johnstone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/scottstone72/checklist_inspections/issues"
+  },
+  "homepage": "https://github.com/scottstone72/checklist_inspections",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-autoprefixer": "^2.0.0",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-less": "^0.12.0",
+    "grunt-contrib-uglify": "^0.6.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-newer": "^0.8.0"
+  }
+}

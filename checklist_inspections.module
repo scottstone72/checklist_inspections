@@ -1,0 +1,159 @@
+<?php
+
+/**
+ *	Implements hook_permission().
+ */
+function checklist_inspections_permission() {
+  return array(
+    'view checklist inspections approvals page' => array(
+      'title' => t('Access Checklist Inspections'),
+      'description' => t('Access to the checklist inspections form.'),
+      'restrict access' => TRUE,
+    ),
+    'view checklist inspections' => array(
+      'title' => t('Access Checklist Inspections'),
+      'description' => t('Access to the checklist inspections form.'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+
+function checklist_inspections_menu() {
+  $items = array();
+
+  $items['checklist_inspections'] = array(
+    'title' => 'Checklist Inspections Form',
+    'description' => t('This form is for recording maintenance or damage that may be needed or required.'),
+    'page callback' => 'checklist_inspections_page',
+    'access arguments' => array('view checklist inspections'),
+    'file' => 'checklist_inspections.inc',
+    'type' => MENU_NORMAL_ITEM,
+
+  );
+
+  $items['checklist_inspections/print'] = array(
+    'title' => '',
+    'page callback' => 'checklist_inspections_callback_print',
+    'access arguments' => array('view checklist inspections'),
+    'file' => 'checklist_inspections.print.inc',
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['checklist_inspections/approvals'] = array(
+    'title' => 'Admin - Checklist Inspections Approvals',
+    'page callback' => 'checklist_inspections_approval_page',
+    'access arguments' => array('view checklist inspections approvals page'),
+    'file' => 'checklist_inspections.approvals.inc',
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  // Approval print page
+  $items['checklist_inspections/approvals/print'] = array(
+    'title' => '',
+    'page callback' => 'checklist_approval_callback_print',
+    'access arguments' => array('view checklist inspections approvals page'),
+    'file' => 'checklist_inspections.approval.print.inc',
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['checklist_inspections/open/print/%'] = array(
+	'title' => '',
+	'page callback' => 'checklist_open_callback_print',
+	'page arguments' => array(3),
+	'access arguments' => array('view checklist inspections'),
+	'file' => 'checklist_inspections.open.print.inc',
+	'type' => MENU_CALLBACK,
+  );
+
+  $items['checklist_inspections/open_inspections'] = array(
+    'title' => 'Open Checklist Inspections',
+    'description' => t('For viewing open checklist inspections.'),
+    'page callback' => 'checklist_inspections_open_page',
+    'access arguments' => array('view checklist inspections'),
+    'file' => 'checklist_inspections.open.inc',
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  $items['checklist_inspections/archive/print/%'] = array(
+    'title' => '',
+    'page callback' => 'checklist_archive_callback_print',
+    'page arguments' => array(3),
+    'access arguments' => array('view checklist inspections'),
+    'file' => 'checklist_inspections.archive.print.inc',
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['checklist_inspections/archived_inspections'] = array(
+    'title' => ' Archived Checklist Inspections',
+    'description' => t('For viewing archived checklist inspections.'),
+    'page callback' => 'checklist_inspections_archive_page',
+    'access arguments' => array('view checklist inspections'),
+    'file' => 'checklist_inspections.archive.inc',
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+
+/**
+ * Implements hook_mail()
+ * Using to send email from transfer request submissions to administrator
+ * @param string $key
+ * @param array $message
+ * @param array $params
+ *
+ */
+function checklist_inspections_mail($key, &$message, $params) {
+  $language = $message['language'];
+  switch ($key) {
+    case 'new_checklist':
+      $vars = array();
+      $order_num = $params['order_num'];
+      $date = $params['date'];
+
+      $message['subject'] = t('New Checklist Inspections Form', $vars, array($language->language));
+      $message['body'][] = "A new Checklist Inspections Order # $order_num has been submitted on $date, please click the following link below to view submission. \n\n"  .
+        l('Login ','http://ponderosarentals.com/checklist_inspections_approval');
+      break;
+
+//    case 'third_party':
+//      $vars = array();
+//      $transfer_num = $params['transfer_num'];
+//      $date = $params['date'];
+//      $notes = $params['notes'];
+//
+//      $message['subject'] = t('New Transfer Request', $vars, array($language->language));
+//      $message['body'][] = "A new Transfer Request# $transfer_num with applicable third party charges has been submitted on $date, please click the following link to view the request. \n\n" .  "Notes \n" . "$notes \n" .
+//        l('Login ','http://ponderosarentals.com/transfer_request_approval');
+//      break;
+  }
+}
+
+
+/**
+ * Adding multiple forms to the page.
+ * This form is called when drupal_retrieve_form() can't find a matching $form_id.
+ * This file has to be in the .module file to work properly.
+ */
+function checklist_inspections_forms($form_id, $args) {
+  $forms = array();
+
+  if ( substr($form_id, 0,36) == 'checklist_inspections_approval_form_' ) {
+    $forms[$form_id] = array('callback' => 'checklist_inspections_approval_form');
+  }
+
+  if ( substr($form_id, 0,32) == 'checklist_inspections_open_form_' ) {
+    $forms[$form_id] = array('callback' => 'checklist_inspections_open_form');
+  }
+
+  if ( substr($form_id, 0,35) == 'checklist_inspections_archive_form_' ) {
+    $forms[$form_id] = array('callback' => 'checklist_inspections_archive_form');
+  }
+
+  return $forms;
+}

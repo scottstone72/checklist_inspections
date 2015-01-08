@@ -1,0 +1,155 @@
+@import 'bootstrap.less';
+@import 'variables.less';
+
+
+
+.checklist-inspections-open-form {
+
+  .category {
+    h3 {
+      margin: 0 0 5px 0;
+      padding: 0;
+    }
+  }
+
+  .unit-id {
+    text-align: center;
+    h4 {
+      padding: 0;
+      margin: 0 0 5px 0;
+    }
+  }
+
+  h2, h3 {
+    text-align: center;
+  }
+
+  h2{
+    font-size: 1.6em;
+  }
+
+  h3 {
+    margin-top: 5px;
+    color: #d36a00;
+    font-size: 1.3em;
+  }
+
+  .order-num, .date-submitted, .inspected-by, .follow-up-alert {
+    .make-sm-column(3);
+    .make-md-column(3);
+    .make-lg-column(3);
+  }
+
+
+  .checklist-message {
+    .make-lg-column(12);
+    //    margin-top: 35px;
+
+    .satisfactory-info {
+      color: darken(@btn-success-bg, 10%);
+    }
+
+    .deficient-info {
+      color: darken(@btn-danger-bg, 5%);
+    }
+
+    .NA-info {
+      color: lighten(@component-active-bg, 5%);
+
+    }
+  }
+
+  .edit-equip-state {
+
+    .ratings-container {
+      margin-bottom: 5px;
+      border: 2px solid #88795a;
+
+      .panel-body {
+        padding-bottom: 5px;
+        padding-top: 5px;
+      }
+
+      .text-box {
+        .make-xs-column(6);
+        .make-sm-column(6);
+        .make-md-column(6);
+        .make-lg-column(6);
+        margin-bottom: 2px;
+        margin-left: 10px;
+      }
+
+      .radio-buttons {
+        padding-left: 20px;
+        //        padding-bottom: 5px;
+      }
+    }
+  }
+
+  .admin-approver {
+    .make-sm-column(4);
+    .make-md-column(4);
+    .make-lg-column(4);
+  }
+
+  .update-button {
+    margin-top: 32px;
+    .make-sm-column(3);
+    .make-md-column(2);
+    .make-lg-column(2);
+  }
+
+  .cancel-button {
+    font-size: 1.1em;
+    margin-top: 20px;
+    padding-top: 15px;
+    .make-sm-column(2);
+    .make-md-column(1);
+    .make-lg-column(1);
+  }
+
+  .submit-button {
+    .pull-right;
+    margin-top: 32px;
+    .make-sm-column(12);
+    .make-md-column(12);
+    .make-lg-column(12);
+  }
+
+  .table {
+    margin-bottom: 5px;
+  }
+
+  .checkboxes {
+    .btn-danger;
+  }
+
+
+  .ratings-container.satisfactory {
+    border: 2px solid darken(@btn-success-border, 5%);
+  }
+
+  .satisfactory {
+    background-color: @btn-success-bg;
+  }
+
+  .ratings-container.deficient {
+    border: 2px solid darken(@btn-danger-border, 5%);
+  }
+
+  .deficient {
+    background-color: @btn-danger-bg;
+  }
+}
+
+
+.show-details, .cancel-btn-val {
+  color: #d36a00;
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: darken(#d36a00, 5%);
+  }
+
+}
+
