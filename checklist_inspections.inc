@@ -30,7 +30,7 @@ function checklist_inspect_form($form, &$form_state) {
   $equip_category = $checklist_obj->get_equipment_categories();
   $order_num = $checklist_obj->check_inspect_order_num();
   $form = array();
-
+  $form = array('#id' => 'checklist-inspect-form');
   // Add some text
   $form['user_message'] = array(
     '#type' => 'markup',
