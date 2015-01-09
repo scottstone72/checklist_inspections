@@ -2,7 +2,7 @@
 require_once(DRUPAL_ROOT . '/' . drupal_get_path('module', 'checklist_inspections') . '/includes/checklist_inspections.class.inc.php');
 require_once(DRUPAL_ROOT . '/' . drupal_get_path('module', 'checklist_inspections') . '/includes/checklist_category.class.inc.php');
 
-drupal_add_css(drupal_get_path('module', 'checklist_inspections') . '/dist/css/min/check_inspect_form.min.css');
+drupal_add_css(drupal_get_path('module', 'checklist_inspections') . '/dist/css/min/check_inspect_form.min.css', array('scope' => 'footer'));
 drupal_add_js(drupal_get_path('module', 'checklist_inspections') . '/dist/js/checklist_inspections.min.js');
 
 /**
@@ -235,7 +235,7 @@ function checklist_inspect_form($form, &$form_state) {
 
             $form['container']['equip_state'][$key]['checkbox_group'][$val] = array(
               '#type' => 'markup',
-              '#markup' => '<label for="order-' . $order_num . '-' . $val . '" class="btn btn-default">
+              '#markup' => '<label for="order-' . $order_num . '-' . $val . '" class="btn btn-danger">
                                 <input type="checkbox"  name="' . $key . '_' . $val . '" id="order-' . $order_num . '-' . $val . '">' . $val . '</label>'
             );
           }

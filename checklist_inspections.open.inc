@@ -406,7 +406,7 @@ function checklist_inspections_open_form($form, &$form_state, $args) {
     '#type' => 'submit',
     '#value' => t('Complete Inspection'),
     '#id' => 'submit-' . $order_num,
-    '#attributes' => array('class' => array('btn btn-success btn-lg')),
+    '#attributes' => array('class' => array('btn btn-primary btn-lg')),
     '#validate' => array('checklist_inspections_update_submit_validate'),
     '#submit' => array('checklist_inspections_submit_submit'),
     '#prefix' => '<div class="submit-button">',

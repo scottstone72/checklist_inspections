@@ -384,6 +384,7 @@ function checklist_inspections_approval_form($form, &$form_state, $args) {
       '#type' => 'submit',
       '#value' => t('Approve Repair'),
       '#id' => 'submit-' . $order_num,
+      '#attributes' => array('class' => array('btn btn-primary')),
       '#prefix' => '<div class="submit-button">',
       '#suffix' => '</div>',
     );
