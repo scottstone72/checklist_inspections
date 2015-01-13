@@ -6221,6 +6221,9 @@ button.close {
 .checklist-inspections-approval-form .checklist-message .NA-info {
   color: #eaac40;
 }
+.checklist-inspections-approval-form .edit-equip-state {
+  clear: left;
+}
 .checklist-inspections-approval-form .edit-equip-state .ratings-container {
   margin-bottom: 5px;
   border: 2px solid #88795a;
@@ -6372,7 +6375,7 @@ fieldset[disabled] .checklist-inspections-approval-form .checkboxes.active {
 @media (min-width: 1200px) {
   .checklist-inspections-approval-form .admin-section .submit-button {
     float: left;
-    width: 16.66666667%;
+    width: 25%;
   }
 }
 .checklist-inspections-approval-form .admin-section .cancel-button {
@@ -6398,7 +6401,7 @@ fieldset[disabled] .checklist-inspections-approval-form .checkboxes.active {
 @media (min-width: 1200px) {
   .checklist-inspections-approval-form .admin-section .cancel-button {
     float: left;
-    width: 16.66666667%;
+    width: 25%;
   }
 }
 .checklist-inspections-approval-form table tr td:first-child,

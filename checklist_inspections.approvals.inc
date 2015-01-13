@@ -390,7 +390,7 @@ function checklist_inspections_approval_form($form, &$form_state, $args) {
     );
 
     $form['container' . $order_num]['admin']['cancel'] = array(
-      '#markup' => '<span value="' . $order_num . '"  class="cancel-btn-val"> Form</span>',
+      '#markup' => '<span value="' . $order_num . '"  class="cancel-btn-val">Hide Form</span>',
       '#prefix' => '<div class="cancel-button">',
       '#suffix' => '</div>',
     );

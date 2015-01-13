@@ -1,8 +1,8 @@
 name = Checklist Inspections
 description = Inspection checklists for rental equipment items.
 core = 7.x
-version = v2.0
-package = Ponderosa_Rental_Modules
+version = 7.x - v2.0
+package = Ponderosa Rentals Modules
 
 files[] = checklist_inspections.module
 files[] = checklist_inspections.install

@@ -6221,6 +6221,9 @@ form .checklist-message .deficient-info {
 form .checklist-message .NA-info {
   color: #eaac40;
 }
+form .edit-equip-state {
+  clear: left;
+}
 form .edit-equip-state .ratings-container {
   margin-bottom: 5px;
   border: 2px solid #88795a;
