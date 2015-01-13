@@ -3,7 +3,7 @@
 require_once(DRUPAL_ROOT . '/' . drupal_get_path('module', 'checklist_inspections') . '/includes/checklist_inspections.class.inc.php');
 require_once(DRUPAL_ROOT . '/' . drupal_get_path('module', 'checklist_inspections') . '/includes/checklist_category.class.inc.php');
 drupal_add_css(drupal_get_path('module', 'checklist_inspections') . '/dist/css/min/check_inspect_open.min.css');
-drupal_add_js(drupal_get_path('module', 'checklist_inspections') . '/dist/js/checklist_approval_form.min.js', array('scope' => 'footer'));
+drupal_add_js(drupal_get_path('module', 'checklist_inspections') . '/dist/js/checklist_open_form.min.js', array('scope' => 'footer'));
 
 /**
  * Show form once callback has fired.
@@ -87,9 +87,9 @@ function checklist_inspections_open_form($form, &$form_state, $args) {
 	'print' => $links['print'],
   );
 
-  $form['#attributes'] = array(
-    'class' => array('checklist-inspections-open-form'),
-  );
+//  $form['#attributes'] = array(
+//    'class' => array('checklist-inspections-open-form'),
+//  );
 
   // Construct the table
   $form['approval_table' . $order_num] = array(
@@ -159,7 +159,7 @@ function checklist_inspections_open_form($form, &$form_state, $args) {
     '#title' => 'Follow Up Alert',
     '#default_value' => $follow_up_alert,
     '#id' => 'follow-up-' . $order_num,
-    '#attributes' => array('class' => array('datepicker')),
+    '#attributes' => array('class' => array('ui-datepicker')),
     '#prefix' => '<div class="follow-up-alert" id="follow-up-alert-' . $order_num . '">',
     '#suffix' => '</div>',
   );
@@ -366,12 +366,9 @@ function checklist_inspections_open_form($form, &$form_state, $args) {
     '#title' => t('Notes:'),
     '#default_value' => $admin_notes,
     '#disabled' => TRUE,
-
-    '#rows' => 5,
-    '#cols' => 100,
   );
 
-  $form['container' . $order_num]['admin']['row_4_open']['#markup'] = '<div class="row">';
+//  $form['container' . $order_num]['admin']['row_4_open']['#markup'] = '<div class="admin-section">';
 
 
   $form['container' . $order_num]['admin']['admin_approver'] = array(
@@ -396,12 +393,6 @@ function checklist_inspections_open_form($form, &$form_state, $args) {
     '#suffix' => '</div>',
   );
 
-  $form['container' . $order_num]['admin']['cancel'] = array(
-    '#markup' => '<div><span value="' . $order_num . '"  class="cancel-btn-val">Cancel</span></div>',
-    '#prefix' => '<div class="cancel-button">',
-    '#suffix' => '</div>',
-  );
-
   $form['container' . $order_num]['admin']['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Complete Inspection'),
@@ -413,7 +404,13 @@ function checklist_inspections_open_form($form, &$form_state, $args) {
     '#suffix' => '</div>',
   );
 
-  $form['container' . $order_num]['admin']['row_4_closed']['#markup'] = '</div>';
+  $form['container' . $order_num]['admin']['cancel'] = array(
+    '#markup' => '<span value="' . $order_num . '"  class="cancel-btn-val">Hide Form</span>',
+    '#prefix' => '<div class="cancel-button">',
+    '#suffix' => '</div>',
+  );
+
+//  $form['container' . $order_num]['admin']['row_4_closed']['#markup'] = '</div>';
 
   // Save these values for submission
   if(isset($category, $unit_id)) {

@@ -5,7 +5,7 @@
     attach: function (context, settings) {
 
 
-      $('table tr td:first-child, thead tr th:first-child').remove(); // Remove the checkbox in table.
+      //$('table tr td:first-child, thead tr th:first-child').remove(); // Remove the checkbox in table.
 
       $('.approval-fieldset').once().hide(); // Hide the forms on page load.
 
@@ -23,17 +23,21 @@
           addRepairStats(table_num);
         }
       }); // End click event
+    }
+  };
 
+  Drupal.behaviors.checklist_approval_datepicker = {
+    attach: function (context, settings) {
 
       // This is our jquery datepicker.
-      $('.datepicker').datepicker({
+      $('.ui-datepicker', context).datepicker({
         beforeShow: function (input, inst) {
           setTimeout(function () {
             inst.dpDiv.css({
-              'position': 'fixed',
-//              'top': 0,
-//              'left': 0,
-              'z-index': 20
+              'padding-top': 0,
+              'margin-top': 0,
+              'z-index': 20,
+              'left': '890px'
             });
           }, 0);
         },

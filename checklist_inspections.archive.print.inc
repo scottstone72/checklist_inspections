@@ -11,7 +11,7 @@ function checklist_archive_callback_print($args) {
 
   $repair_data = array();
   $checklist = new ChecklistInspections(); // Get repair order object.
-  $checklist_data = $checklist->get_completed_checklist_data($args);
+  $checklist_data = $checklist->get_selected_completed_checklist_data($args);
 
   foreach ($checklist_data as $value) {
 

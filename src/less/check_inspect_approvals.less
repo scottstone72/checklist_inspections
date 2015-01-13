@@ -1,9 +1,11 @@
 @import 'bootstrap.less';
 @import 'variables.less';
 
-
-
 .checklist-inspections-approval-form {
+
+  fieldset.approval-fieldset {
+    border: 3px solid #ffffff;
+  }
 
   .category {
     h3 {
@@ -24,7 +26,7 @@
     text-align: center;
   }
 
-  h2{
+  h2 {
     font-size: 1.6em;
   }
 
@@ -40,13 +42,9 @@
     .make-lg-column(3);
   }
 
-  .follow-up-alert {
-    position: relative;
-  }
-
   .checklist-message {
     .make-lg-column(12);
-//    margin-top: 35px;
+    //    margin-top: 35px;
 
     .satisfactory-info {
       color: darken(@btn-success-bg, 10%);
@@ -84,36 +82,8 @@
 
       .radio-buttons {
         padding-left: 20px;
-//        padding-bottom: 5px;
+        //        padding-bottom: 5px;
       }
-    }
-}
-
-  .admin-approver {
-    .make-sm-column(4);
-    .make-md-column(4);
-    .make-lg-column(3);
-  }
-
-  .submit-button {
-//    margin-top: 32px;
-    .make-sm-column(2);
-    .make-md-column(2);
-    .make-lg-column(1);
-  }
-
-  .cancel-button {
-//    font-size: 1.3em;
-//    margin-top: 15px;
-//    padding-top: 15px;
-    .make-sm-column(2);
-    .make-md-column(2);
-    .make-lg-column(1);
-
-    @media (min-width: 1216px) {
-      margin: 17px 0 0 50px;
-      padding-top: 15px;
-
     }
   }
 
@@ -124,7 +94,6 @@
   .checkboxes {
     .btn-danger;
   }
-
 
   .ratings-container.satisfactory {
     border: 2px solid darken(@btn-success-border, 5%);
@@ -141,15 +110,45 @@
   .deficient {
     background-color: @btn-danger-bg;
   }
-}
 
+  .show-details, .cancel-btn-val {
+    color: #d36a00;
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+      color: darken(#d36a00, 5%);
+    }
+  }
+  .admin-section {
+    .admin-approver {
+      .make-sm-column(4);
+      .make-md-column(4);
+      .make-lg-column(4);
+    }
 
-.show-details, .cancel-btn-val {
-  color: #d36a00;
-  &:hover {
-    text-decoration: underline;
-    cursor: pointer;
-    color: darken(#d36a00, 5%);
+    .submit-button {
+      margin-top: 32px;
+      .make-sm-column(3);
+      .make-md-column(3);
+      .make-lg-column(2);
+      //    @media (max-width: 1007px) {
+      //      margin-right: 30px;
+      //      padding-right: 30px;
+      //    }
+    }
+
+    .cancel-button {
+      clear: left;
+      margin-top: 30px;
+      //    .pull-right;
+      .make-sm-column(3);
+      .make-md-column(3);
+      .make-lg-column(2);
+
+    }
+  }
+
+  table tr td:first-child, thead tr th:first-child {
+    display: none;
   }
 }
-

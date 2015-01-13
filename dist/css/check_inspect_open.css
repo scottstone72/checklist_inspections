@@ -6075,95 +6075,98 @@ button.close {
     display: none !important;
   }
 }
-.checklist-inspections-open-form .category h3 {
+form .approval-fieldset.panel.panel-default {
+  border: 3px solid #ffffff;
+}
+form .category h3 {
   margin: 0 0 5px 0;
   padding: 0;
 }
-.checklist-inspections-open-form .unit-id {
+form .unit-id {
   text-align: center;
 }
-.checklist-inspections-open-form .unit-id h4 {
+form .unit-id h4 {
   padding: 0;
   margin: 0 0 5px 0;
 }
-.checklist-inspections-open-form h2,
-.checklist-inspections-open-form h3 {
+form h2,
+form h3 {
   text-align: center;
 }
-.checklist-inspections-open-form h2 {
+form h2 {
   font-size: 1.6em;
 }
-.checklist-inspections-open-form h3 {
+form h3 {
   margin-top: 5px;
   color: #d36a00;
   font-size: 1.3em;
 }
-.checklist-inspections-open-form .order-num,
-.checklist-inspections-open-form .date-submitted,
-.checklist-inspections-open-form .inspected-by,
-.checklist-inspections-open-form .follow-up-alert {
+form .order-num,
+form .date-submitted,
+form .inspected-by,
+form .follow-up-alert {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
 }
 @media (min-width: 768px) {
-  .checklist-inspections-open-form .order-num,
-  .checklist-inspections-open-form .date-submitted,
-  .checklist-inspections-open-form .inspected-by,
-  .checklist-inspections-open-form .follow-up-alert {
+  form .order-num,
+  form .date-submitted,
+  form .inspected-by,
+  form .follow-up-alert {
     float: left;
     width: 25%;
   }
 }
 @media (min-width: 992px) {
-  .checklist-inspections-open-form .order-num,
-  .checklist-inspections-open-form .date-submitted,
-  .checklist-inspections-open-form .inspected-by,
-  .checklist-inspections-open-form .follow-up-alert {
+  form .order-num,
+  form .date-submitted,
+  form .inspected-by,
+  form .follow-up-alert {
     float: left;
     width: 25%;
   }
 }
 @media (min-width: 1200px) {
-  .checklist-inspections-open-form .order-num,
-  .checklist-inspections-open-form .date-submitted,
-  .checklist-inspections-open-form .inspected-by,
-  .checklist-inspections-open-form .follow-up-alert {
+  form .order-num,
+  form .date-submitted,
+  form .inspected-by,
+  form .follow-up-alert {
     float: left;
     width: 25%;
   }
 }
-.checklist-inspections-open-form .checklist-message {
+form .checklist-message {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
 }
 @media (min-width: 1200px) {
-  .checklist-inspections-open-form .checklist-message {
+  form .checklist-message {
     float: left;
     width: 100%;
   }
 }
-.checklist-inspections-open-form .checklist-message .satisfactory-info {
+form .checklist-message .satisfactory-info {
   color: #449d44;
 }
-.checklist-inspections-open-form .checklist-message .deficient-info {
+form .checklist-message .deficient-info {
   color: #d43f3a;
 }
-.checklist-inspections-open-form .checklist-message .NA-info {
+form .checklist-message .NA-info {
   color: #eaac40;
 }
-.checklist-inspections-open-form .edit-equip-state .ratings-container {
+form .edit-equip-state .ratings-container {
   margin-bottom: 5px;
   border: 2px solid #88795a;
 }
-.checklist-inspections-open-form .edit-equip-state .ratings-container .panel-body {
+form .edit-equip-state .ratings-container .panel-body {
   padding-bottom: 5px;
   padding-top: 5px;
 }
-.checklist-inspections-open-form .edit-equip-state .ratings-container .text-box {
+form .edit-equip-state .ratings-container .text-box {
   float: left;
   width: 50%;
   position: relative;
@@ -6174,51 +6177,52 @@ button.close {
   margin-left: 10px;
 }
 @media (min-width: 768px) {
-  .checklist-inspections-open-form .edit-equip-state .ratings-container .text-box {
+  form .edit-equip-state .ratings-container .text-box {
     float: left;
     width: 50%;
   }
 }
 @media (min-width: 992px) {
-  .checklist-inspections-open-form .edit-equip-state .ratings-container .text-box {
+  form .edit-equip-state .ratings-container .text-box {
     float: left;
     width: 50%;
   }
 }
 @media (min-width: 1200px) {
-  .checklist-inspections-open-form .edit-equip-state .ratings-container .text-box {
+  form .edit-equip-state .ratings-container .text-box {
     float: left;
     width: 50%;
   }
 }
-.checklist-inspections-open-form .edit-equip-state .ratings-container .radio-buttons {
+form .edit-equip-state .ratings-container .radio-buttons {
   padding-left: 20px;
 }
-.checklist-inspections-open-form .admin-approver {
+form .admin-approver {
+  margin-bottom: 32px;
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
 }
 @media (min-width: 768px) {
-  .checklist-inspections-open-form .admin-approver {
+  form .admin-approver {
     float: left;
     width: 33.33333333%;
   }
 }
 @media (min-width: 992px) {
-  .checklist-inspections-open-form .admin-approver {
+  form .admin-approver {
     float: left;
     width: 33.33333333%;
   }
 }
 @media (min-width: 1200px) {
-  .checklist-inspections-open-form .admin-approver {
+  form .admin-approver {
     float: left;
     width: 33.33333333%;
   }
 }
-.checklist-inspections-open-form .update-button {
+form .update-button {
   margin-top: 32px;
   position: relative;
   min-height: 1px;
@@ -6226,139 +6230,139 @@ button.close {
   padding-right: 15px;
 }
 @media (min-width: 768px) {
-  .checklist-inspections-open-form .update-button {
+  form .update-button {
     float: left;
-    width: 25%;
+    width: 66.66666667%;
   }
 }
 @media (min-width: 992px) {
-  .checklist-inspections-open-form .update-button {
+  form .update-button {
     float: left;
-    width: 16.66666667%;
+    width: 66.66666667%;
   }
 }
 @media (min-width: 1200px) {
-  .checklist-inspections-open-form .update-button {
+  form .update-button {
     float: left;
-    width: 16.66666667%;
+    width: 66.66666667%;
   }
 }
-.checklist-inspections-open-form .cancel-button {
-  font-size: 1.1em;
-  margin-top: 20px;
-  padding-top: 15px;
+form .cancel-button {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
 }
 @media (min-width: 768px) {
-  .checklist-inspections-open-form .cancel-button {
+  form .cancel-button {
     float: left;
-    width: 16.66666667%;
+    width: 33.33333333%;
   }
 }
 @media (min-width: 992px) {
-  .checklist-inspections-open-form .cancel-button {
+  form .cancel-button {
     float: left;
-    width: 8.33333333%;
+    width: 33.33333333%;
   }
 }
 @media (min-width: 1200px) {
-  .checklist-inspections-open-form .cancel-button {
+  form .cancel-button {
     float: left;
-    width: 8.33333333%;
+    width: 33.33333333%;
   }
 }
-.checklist-inspections-open-form .submit-button {
-  float: right !important;
-  margin-top: 32px;
+form .submit-button {
+  margin-bottom: 30px;
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
 }
 @media (min-width: 768px) {
-  .checklist-inspections-open-form .submit-button {
+  form .submit-button {
     float: left;
     width: 100%;
   }
 }
 @media (min-width: 992px) {
-  .checklist-inspections-open-form .submit-button {
+  form .submit-button {
     float: left;
     width: 100%;
   }
 }
 @media (min-width: 1200px) {
-  .checklist-inspections-open-form .submit-button {
+  form .submit-button {
     float: left;
     width: 100%;
   }
 }
-.checklist-inspections-open-form .table {
+form .table {
   margin-bottom: 5px;
 }
-.checklist-inspections-open-form .checkboxes {
+form .checkboxes {
   color: #ffffff;
   background-color: #d9534f;
   border-color: #d43f3a;
 }
-.checklist-inspections-open-form .checkboxes:hover,
-.checklist-inspections-open-form .checkboxes:focus,
-.checklist-inspections-open-form .checkboxes:active,
-.checklist-inspections-open-form .checkboxes.active,
-.open > .dropdown-toggle.checklist-inspections-open-form .checkboxes {
+form .checkboxes:hover,
+form .checkboxes:focus,
+form .checkboxes:active,
+form .checkboxes.active,
+.open > .dropdown-toggleform .checkboxes {
   color: #ffffff;
   background-color: #c9302c;
   border-color: #ac2925;
 }
-.checklist-inspections-open-form .checkboxes:active,
-.checklist-inspections-open-form .checkboxes.active,
-.open > .dropdown-toggle.checklist-inspections-open-form .checkboxes {
+form .checkboxes:active,
+form .checkboxes.active,
+.open > .dropdown-toggleform .checkboxes {
   background-image: none;
 }
-.checklist-inspections-open-form .checkboxes.disabled,
-.checklist-inspections-open-form .checkboxes[disabled],
-fieldset[disabled] .checklist-inspections-open-form .checkboxes,
-.checklist-inspections-open-form .checkboxes.disabled:hover,
-.checklist-inspections-open-form .checkboxes[disabled]:hover,
-fieldset[disabled] .checklist-inspections-open-form .checkboxes:hover,
-.checklist-inspections-open-form .checkboxes.disabled:focus,
-.checklist-inspections-open-form .checkboxes[disabled]:focus,
-fieldset[disabled] .checklist-inspections-open-form .checkboxes:focus,
-.checklist-inspections-open-form .checkboxes.disabled:active,
-.checklist-inspections-open-form .checkboxes[disabled]:active,
-fieldset[disabled] .checklist-inspections-open-form .checkboxes:active,
-.checklist-inspections-open-form .checkboxes.disabled.active,
-.checklist-inspections-open-form .checkboxes[disabled].active,
-fieldset[disabled] .checklist-inspections-open-form .checkboxes.active {
+form .checkboxes.disabled,
+form .checkboxes[disabled],
+fieldset[disabled] form .checkboxes,
+form .checkboxes.disabled:hover,
+form .checkboxes[disabled]:hover,
+fieldset[disabled] form .checkboxes:hover,
+form .checkboxes.disabled:focus,
+form .checkboxes[disabled]:focus,
+fieldset[disabled] form .checkboxes:focus,
+form .checkboxes.disabled:active,
+form .checkboxes[disabled]:active,
+fieldset[disabled] form .checkboxes:active,
+form .checkboxes.disabled.active,
+form .checkboxes[disabled].active,
+fieldset[disabled] form .checkboxes.active {
   background-color: #d9534f;
   border-color: #d43f3a;
 }
-.checklist-inspections-open-form .checkboxes .badge {
+form .checkboxes .badge {
   color: #d9534f;
   background-color: #ffffff;
 }
-.checklist-inspections-open-form .ratings-container.satisfactory {
+form .ratings-container.satisfactory {
   border: 2px solid #449d44;
 }
-.checklist-inspections-open-form .satisfactory {
+form .satisfactory {
   background-color: #5cb85c;
 }
-.checklist-inspections-open-form .ratings-container.deficient {
+form .ratings-container.deficient {
   border: 2px solid #c9302c;
 }
-.checklist-inspections-open-form .deficient {
+form .deficient {
   background-color: #d9534f;
 }
-.show-details,
-.cancel-btn-val {
+form .show-details,
+form .cancel-btn-val {
   color: #d36a00;
 }
-.show-details:hover,
-.cancel-btn-val:hover {
+form .show-details:hover,
+form .cancel-btn-val:hover {
   text-decoration: underline;
   cursor: pointer;
   color: #ba5d00;
+}
+form table tr td:first-child,
+form thead tr th:first-child {
+  display: none;
 }

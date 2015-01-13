@@ -156,7 +156,7 @@ function checklist_inspections_approval_form($form, &$form_state, $args) {
       '#title' => 'Follow Up Alert',
       '#default_value' => $follow_up_alert,
       '#id' => 'follow-up-' . $order_num,
-      '#attributes' => array('class' => array('datepicker')),
+      '#attributes' => array('class' => array('ui-datepicker')),
       '#prefix' => '<div class="follow-up-alert" id="follow-up-alert-' . $order_num . '">',
       '#suffix' => '</div>',
     );
@@ -366,7 +366,7 @@ function checklist_inspections_approval_form($form, &$form_state, $args) {
       '#cols' => 100,
     );
 
-    $form['container' . $order_num]['admin']['row_4_open']['#markup'] = '<div class="row">';
+    $form['container' . $order_num]['admin']['row_4_open']['#markup'] = '<div class="admin-section">';
 
 
     $form['container' . $order_num]['admin']['admin_approver'] = array(
@@ -390,7 +390,7 @@ function checklist_inspections_approval_form($form, &$form_state, $args) {
     );
 
     $form['container' . $order_num]['admin']['cancel'] = array(
-      '#markup' => '<div><span value="' . $order_num . '"  class="cancel-btn-val">Cancel</span></div>',
+      '#markup' => '<span value="' . $order_num . '"  class="cancel-btn-val"> Form</span>',
       '#prefix' => '<div class="cancel-button">',
       '#suffix' => '</div>',
     );

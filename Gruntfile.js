@@ -74,13 +74,13 @@ module.exports = function (grunt) {
         livereload: true
       },
       files: 'src/less/*.less', // which files to watch
-      tasks: ['newer:less:prod','newer:autoprefixer:dev'],
+      tasks: ['newer:less:dev','newer:autoprefixer:dev', 'newer:less:prod'],
       scripts: {
         files: ['./**/*.inc', './*.inc', './*.module', './**/*.info', './js/*.js', './js/*.print.js', './src/less/*.less']
       },
       js: {
         files: ['src/js/*.js'],
-        tasks: ['newer:uglify']
+        tasks: ['newer:uglify:all']
       }
     }
 

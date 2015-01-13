@@ -3,7 +3,8 @@ require_once(DRUPAL_ROOT . '/' . drupal_get_path('module', 'checklist_inspection
 require_once(DRUPAL_ROOT . '/' . drupal_get_path('module', 'checklist_inspections') . '/includes/checklist_category.class.inc.php');
 
 drupal_add_css(drupal_get_path('module', 'checklist_inspections') . '/dist/css/min/check_inspect_form.min.css', array('scope' => 'footer'));
-drupal_add_js(drupal_get_path('module', 'checklist_inspections') . '/dist/js/checklist_inspections.min.js');
+drupal_add_js(drupal_get_path('module', 'checklist_inspections') . '/dist/js/checklist_inspections.min.js', array('scope' => 'footer'));
+drupal_add_js(drupal_get_path('module', 'checklist_inspections') . '/dist/js/jquery.cookie.js', array('scope' => 'footer'));
 
 /**
  * Show form once callback has fired.
@@ -216,8 +217,8 @@ function checklist_inspect_form($form, &$form_state) {
                           <label for="order-' . $order_num . '-' . $key . '_2" class="btn btn-primary radios">
                             <input type="radio" name="' . $key . '_radio" id="order-' . $order_num . '-' . $key . '_2" value="2">D
                           </label>
-                          <label for="order-' . $order_num . '-' . $key . '_3" class="btn btn-primary radios active">
-                            <input type="radio" name="' . $key . '_radio" id="order-' . $order_num . '-' . $key . '_3" value="3" checked="true">N/A
+                          <label for="order-' . $order_num . '-' . $key . '_3" class="btn btn-primary radios">
+                            <input type="radio" name="' . $key . '_radio" id="order-' . $order_num . '-' . $key . '_3" value="3">N/A
                           </label>
                         </div>'
         );
@@ -235,8 +236,8 @@ function checklist_inspect_form($form, &$form_state) {
 
             $form['container']['equip_state'][$key]['checkbox_group'][$val] = array(
               '#type' => 'markup',
-              '#markup' => '<label for="order-' . $order_num . '-' . $val . '" class="btn btn-danger">
-                                <input type="checkbox"  name="' . $key . '_' . $val . '" id="order-' . $order_num . '-' . $val . '">' . $val . '</label>'
+              '#markup' => '<label for="order-'. $order_num . '-' . $key . '_' . $val . '" class="btn btn-danger">
+                                <input type="checkbox"  name="' . $key . '_' . $val . '" id="order-'. $order_num . '-' . $key . '_' . $val . '">' . $val . '</label>'
             );
           }
         }

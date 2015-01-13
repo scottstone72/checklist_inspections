@@ -6138,6 +6138,9 @@ button.close {
     display: none !important;
   }
 }
+.checklist-inspections-approval-form fieldset.approval-fieldset {
+  border: 3px solid #ffffff;
+}
 .checklist-inspections-approval-form .category h3 {
   margin: 0 0 5px 0;
   padding: 0;
@@ -6196,9 +6199,6 @@ button.close {
     float: left;
     width: 25%;
   }
-}
-.checklist-inspections-approval-form .follow-up-alert {
-  position: relative;
 }
 .checklist-inspections-approval-form .checklist-message {
   position: relative;
@@ -6260,88 +6260,6 @@ button.close {
 .checklist-inspections-approval-form .edit-equip-state .ratings-container .radio-buttons {
   padding-left: 20px;
 }
-.checklist-inspections-approval-form .admin-approver {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 768px) {
-  .checklist-inspections-approval-form .admin-approver {
-    float: left;
-    width: 33.33333333%;
-  }
-}
-@media (min-width: 992px) {
-  .checklist-inspections-approval-form .admin-approver {
-    float: left;
-    width: 33.33333333%;
-  }
-}
-@media (min-width: 1200px) {
-  .checklist-inspections-approval-form .admin-approver {
-    float: left;
-    width: 25%;
-  }
-}
-.checklist-inspections-approval-form .submit-button {
-  margin-top: 32px;
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 768px) {
-  .checklist-inspections-approval-form .submit-button {
-    float: left;
-    width: 25%;
-  }
-}
-@media (min-width: 992px) {
-  .checklist-inspections-approval-form .submit-button {
-    float: left;
-    width: 16.66666667%;
-  }
-}
-@media (min-width: 1200px) {
-  .checklist-inspections-approval-form .submit-button {
-    float: left;
-    width: 8.33333333%;
-  }
-}
-.checklist-inspections-approval-form .cancel-button {
-  font-size: 1.3em;
-  margin-top: 15px;
-  padding-top: 15px;
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 768px) {
-  .checklist-inspections-approval-form .cancel-button {
-    float: left;
-    width: 16.66666667%;
-  }
-}
-@media (min-width: 992px) {
-  .checklist-inspections-approval-form .cancel-button {
-    float: left;
-    width: 16.66666667%;
-  }
-}
-@media (min-width: 1200px) {
-  .checklist-inspections-approval-form .cancel-button {
-    float: left;
-    width: 8.33333333%;
-  }
-}
-@media (min-width: 1216px) {
-  .checklist-inspections-approval-form .cancel-button {
-    margin: 17px 0 0 50px;
-    padding-top: 15px;
-  }
-}
 .checklist-inspections-approval-form .table {
   margin-bottom: 5px;
 }
@@ -6398,13 +6316,92 @@ fieldset[disabled] .checklist-inspections-approval-form .checkboxes.active {
 .checklist-inspections-approval-form .deficient {
   background-color: #d9534f;
 }
-.show-details,
-.cancel-btn-val {
+.checklist-inspections-approval-form .show-details,
+.checklist-inspections-approval-form .cancel-btn-val {
   color: #d36a00;
 }
-.show-details:hover,
-.cancel-btn-val:hover {
+.checklist-inspections-approval-form .show-details:hover,
+.checklist-inspections-approval-form .cancel-btn-val:hover {
   text-decoration: underline;
   cursor: pointer;
   color: #ba5d00;
+}
+.checklist-inspections-approval-form .admin-section .admin-approver {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  .checklist-inspections-approval-form .admin-section .admin-approver {
+    float: left;
+    width: 33.33333333%;
+  }
+}
+@media (min-width: 992px) {
+  .checklist-inspections-approval-form .admin-section .admin-approver {
+    float: left;
+    width: 33.33333333%;
+  }
+}
+@media (min-width: 1200px) {
+  .checklist-inspections-approval-form .admin-section .admin-approver {
+    float: left;
+    width: 33.33333333%;
+  }
+}
+.checklist-inspections-approval-form .admin-section .submit-button {
+  margin-top: 32px;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  .checklist-inspections-approval-form .admin-section .submit-button {
+    float: left;
+    width: 25%;
+  }
+}
+@media (min-width: 992px) {
+  .checklist-inspections-approval-form .admin-section .submit-button {
+    float: left;
+    width: 25%;
+  }
+}
+@media (min-width: 1200px) {
+  .checklist-inspections-approval-form .admin-section .submit-button {
+    float: left;
+    width: 16.66666667%;
+  }
+}
+.checklist-inspections-approval-form .admin-section .cancel-button {
+  clear: left;
+  margin-top: 30px;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  .checklist-inspections-approval-form .admin-section .cancel-button {
+    float: left;
+    width: 25%;
+  }
+}
+@media (min-width: 992px) {
+  .checklist-inspections-approval-form .admin-section .cancel-button {
+    float: left;
+    width: 25%;
+  }
+}
+@media (min-width: 1200px) {
+  .checklist-inspections-approval-form .admin-section .cancel-button {
+    float: left;
+    width: 16.66666667%;
+  }
+}
+.checklist-inspections-approval-form table tr td:first-child,
+.checklist-inspections-approval-form thead tr th:first-child {
+  display: none;
 }

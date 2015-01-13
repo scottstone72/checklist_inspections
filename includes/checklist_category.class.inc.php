@@ -58,6 +58,7 @@ class ChecklistCategories {
           ),
         );
         break;
+
       case 'Shale Bins':
         $cat_list = array(
           'title' => array(

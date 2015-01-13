@@ -6256,6 +6256,69 @@ button.close {
 }
 #checklist-inspect-form #submit-button {
   margin-top: 32px;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  #checklist-inspect-form #submit-button {
+    float: left;
+    width: 16.66666667%;
+  }
+}
+@media (min-width: 992px) {
+  #checklist-inspect-form #submit-button {
+    float: left;
+    width: 16.66666667%;
+  }
+}
+@media (min-width: 1200px) {
+  #checklist-inspect-form #submit-button {
+    float: left;
+    width: 8.33333333%;
+  }
+}
+#checklist-inspect-form .btn-default {
+  color: #ffffff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+#checklist-inspect-form .btn-default:hover,
+#checklist-inspect-form .btn-default:focus,
+#checklist-inspect-form .btn-default:active,
+#checklist-inspect-form .btn-default.active,
+.open > .dropdown-toggle#checklist-inspect-form .btn-default {
+  color: #ffffff;
+  background-color: #c9302c;
+  border-color: #ac2925;
+}
+#checklist-inspect-form .btn-default:active,
+#checklist-inspect-form .btn-default.active,
+.open > .dropdown-toggle#checklist-inspect-form .btn-default {
+  background-image: none;
+}
+#checklist-inspect-form .btn-default.disabled,
+#checklist-inspect-form .btn-default[disabled],
+fieldset[disabled] #checklist-inspect-form .btn-default,
+#checklist-inspect-form .btn-default.disabled:hover,
+#checklist-inspect-form .btn-default[disabled]:hover,
+fieldset[disabled] #checklist-inspect-form .btn-default:hover,
+#checklist-inspect-form .btn-default.disabled:focus,
+#checklist-inspect-form .btn-default[disabled]:focus,
+fieldset[disabled] #checklist-inspect-form .btn-default:focus,
+#checklist-inspect-form .btn-default.disabled:active,
+#checklist-inspect-form .btn-default[disabled]:active,
+fieldset[disabled] #checklist-inspect-form .btn-default:active,
+#checklist-inspect-form .btn-default.disabled.active,
+#checklist-inspect-form .btn-default[disabled].active,
+fieldset[disabled] #checklist-inspect-form .btn-default.active {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+#checklist-inspect-form .btn-default .badge {
+  color: #d9534f;
+  background-color: #ffffff;
 }
 #checklist-inspect-form .satisfactory {
   background-color: #5cb85c;

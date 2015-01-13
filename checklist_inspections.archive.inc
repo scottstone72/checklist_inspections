@@ -2,8 +2,8 @@
 
 require_once(DRUPAL_ROOT . '/' . drupal_get_path('module', 'checklist_inspections') . '/includes/checklist_inspections.class.inc.php');
 require_once(DRUPAL_ROOT . '/' . drupal_get_path('module', 'checklist_inspections') . '/includes/checklist_category.class.inc.php');
-drupal_add_css(drupal_get_path('module', 'checklist_inspections') . '/dist/css/min/check_inspect_open.min.css');
-drupal_add_js(drupal_get_path('module', 'checklist_inspections') . '/dist/js/checklist_approval_form.min.js', array('scope' => 'footer'));
+drupal_add_css(drupal_get_path('module', 'checklist_inspections') . '/dist/css/min/check_inspect_archive.min.css');
+drupal_add_js(drupal_get_path('module', 'checklist_inspections') . '/dist/js/checklist_archive_form.min.js', array('scope' => 'footer'));
 
 /**
  * Show form once callback has fired.
@@ -11,30 +11,122 @@ drupal_add_js(drupal_get_path('module', 'checklist_inspections') . '/dist/js/che
  */
 function checklist_inspections_archive_page() {
 
-  $build = array();
-  $checklist = new ChecklistInspections(); // Get repair order object.
-  $checklist_data = $checklist->get_completed_checklist_data();
+//  $build = array();
+//  $checklist = new ChecklistInspections(); // Get repair order object.
+//  $checklist_data = $checklist->get_completed_checklist_data();
+//
+//  $build['explain_text'] = array(
+//	'#type' => 'markup',
+//	'#markup' => '<p>This page lists all Completed Checklist Inspection forms.
+//    Click the \'Show Details\' link to view details of each completed form.</p>',
+//  );
+//
+//  $repair_data = array();
+//
+//  foreach($checklist_data as $key => $val) {
+//	$build[] = drupal_get_form('checklist_inspections_archive_main_form_' . $val['order_num'], $val);
+//
+//	// Unserialize to prepare for js.
+//	// + operator is a union for arrays, preserves array keys if there are no duplicates else will override.
+//	$repair_data = $repair_data + unserialize($val['repair_archive']);
+//  }
+//
+//  // Hand over to javascript.
+//  drupal_add_js(array('checklist_approval_data' => json_encode($repair_data)), 'setting');
+//
+//  return $build;
 
-  $build['explain_text'] = array(
+  return drupal_get_form('checklist_inspections_archive_main_form');
+}
+
+/**
+ * This is our Main outer form that holds our filter and the children forms
+ */
+function checklist_inspections_archive_main_form($form, &$form_state) {
+
+  $form = array();
+  $checklist_obj = new ChecklistInspections(); // Get repair order object.
+  $checklist_data = $checklist_obj->get_all_completed_checklist_data();
+
+
+  $form['explain_text'] = array(
 	'#type' => 'markup',
-	'#markup' => '<p>This page lists all Completed Checklist Inspection forms.
-    Click the \'Show Details\' link to view details of each completed form.</p>',
+	'#markup' => "<div class='repair-message'><p>Make a selection
+      to bring up a table with the Checklist Inspection history for the Unit ID then click <strong>View Details</strong> to see each order.</p></div>",
   );
 
+  // Get our values for our Unit Id select dropdown
+  $unit_id = array();
+  foreach ($checklist_data as $key => $val) {
+	$unit_id[$val['unit_id']] = $val['unit_id'];
+  }
+
+  $form['filter_box'] = array(
+	'#type' => 'container',
+	'#attributes' => array('id' => 'filter-box'),
+  );
+
+  $form['filter_box']['unit_id_select'] = array(
+	'#type' => 'select',
+	'#title' => 'Filter Archive List',
+	'#empty_option' => t('- Show All Checklist Inspections -'),
+	'#options' => $unit_id,
+	'#ajax' => array(
+	  'callback' => 'get_inspection_history_callback',
+	  'wrapper' => 'unit_select_wrapper',
+	  'method' => 'replace',
+	  'effect' => 'fade',
+	),
+  );
+
+  // Show all repairs that are completed as a default
+  $unit_id = !empty($form_state['values']['unit_id_select']) ? $form_state['values']['unit_id_select'] : NULL;
+
+  $output = array(); // Array to hold our forms
   $repair_data = array();
 
-  foreach($checklist_data as $key => $val) {
-	$build[] = drupal_get_form('checklist_inspections_archive_form_' . $val['order_num'], $val);
+  if(!isset($unit_id)) {
 
-	// Unserialize to prepare for js.
-	// + operator is a union for arrays, preserves array keys if there are no duplicates else will override.
-	$repair_data = $repair_data + unserialize($val['repair_archive']);
+//	// Get all completed forms if Unit Id is not set
+//	$checklist_data = $checklist_obj->get_all_completed_checklist_data();
+
+	foreach ($checklist_data as $key => $val) {
+	  $output[] = drupal_get_form('checklist_inspections_archive_form_' . $val['order_num'], $val);
+	  // Unserialize to prepare for js.
+	  // + operator is a union for arrays, preserves array keys if there are no duplicates else will override.
+	  $repair_data = $repair_data + unserialize($val['repair_archive']);
+	}
+
+  } else {
+	// Filter forms to what user selects form select dropdown
+	$checklist_data = $checklist_obj->get_completed_checklist_data($unit_id);
+
+	foreach ($checklist_data as $key => $val) {
+	  $output[] = drupal_get_form('checklist_inspections_archive_form_' . $val['order_num'], $val);
+	  // Unserialize to prepare for js.
+	  // + operator is a union for arrays, preserves array keys if there are no duplicates else will override.
+	  $repair_data = $repair_data + unserialize($val['repair_archive']);
+	}
+
   }
 
   // Hand over to javascript.
   drupal_add_js(array('checklist_approval_data' => json_encode($repair_data)), 'setting');
 
-  return $build;
+  $form['main_box'] = array(
+	'#type' => 'container',
+	'#children' => drupal_render_children($output),
+	'#id' => 'unit_select_wrapper',
+  );
+
+  return $form;
+}
+
+/**
+ * Ajax callback for unit id select dropdown.
+ */
+function get_inspection_history_callback($form, &$form_state) {
+  return $form['main_box'];
 }
 
 
@@ -74,9 +166,9 @@ function checklist_inspections_archive_form($form, &$form_state, $args) {
   $links['pop_form'] = '<span value="'. $val['order_num'] .'" class="show-details">Show Details</span>';
   $links['print'] = '<a href="/checklist_inspections/archive/print/'. $order_num .'">Print Order</a>';
 
-  $rows = array();
+  $t_rows = array();
   // Build the rows and add data for our table
-  $rows[check_plain($val['order_num'])] = array(
+  $t_rows[check_plain($val['order_num'])] = array(
 	'order_num' => check_plain($val['order_num']),
 	'unit_id' => check_plain($val['unit_id']),
 	'more_details' => $links['pop_form'],
@@ -85,15 +177,16 @@ function checklist_inspections_archive_form($form, &$form_state, $args) {
 	'print' => $links['print'],
   );
 
-  $form['#attributes'] = array(
-	'class' => array('checklist-inspections-open-form'),
-  );
+//  $form['#attributes'] = array(
+//	'class' => array('checklist-inspections-archive-form'),
+//  );
 
   // Construct the table
   $form['approval_table' . $order_num] = array(
 	'#type' => 'tableselect',
 	'#header' => $header,
-	'#options' => $rows,
+	'#options' => $t_rows,
+	'#id' => 'table_' . $order_num,
 	'#js_select' => FALSE,
 	'#empty' => t('No users found'),
 	'#multiple' => TRUE,
@@ -103,6 +196,7 @@ function checklist_inspections_archive_form($form, &$form_state, $args) {
   $form['container' . $order_num] = array(
 	'#type' => 'fieldset',
 	'#tree' => TRUE,
+	'#id' => 'container-' . $order_num,
 	'#attributes' => array('class' => array('approval-fieldset')),
   );
 
@@ -121,7 +215,7 @@ function checklist_inspections_archive_form($form, &$form_state, $args) {
   );
 
 
-  $form['container' . $order_num]['row_1_open']['#markup'] = '<div class="row">';
+//  $form['container' . $order_num]['row_1_open']['#markup'] = '<div class="row">';
 
   $form['container' . $order_num]['order_num'] = array(
 	'#type' => 'textfield',
@@ -152,7 +246,7 @@ function checklist_inspections_archive_form($form, &$form_state, $args) {
   );
 
 
-  $form['container' . $order_num]['row_1_closed']['#markup'] = '</div><div class="row">'; // Close the first row, Open second row
+//  $form['container' . $order_num]['row_1_closed']['#markup'] = '</div><div class="row">'; // Close the first row, Open second row
 
 
   $form['container' . $order_num]['checklist_message']['#markup'] = '<div class="checklist-message" id="checklist-message-' .
@@ -160,7 +254,7 @@ function checklist_inspections_archive_form($form, &$form_state, $args) {
 	'">Satisfactory</em>&nbsp<strong>D</strong> = <em class="deficient-info" id="deficient-info' .
 	$order_num . '">Deficient</em>&nbsp <strong>N/A</strong> = <em class="NA-info" id="NA-info' . $order_num . '"> Not Applicable</em></p></div>';
 
-  $form['container' . $order_num]['row_2_closed']['#markup'] = '</div>'; // Close second row
+//  $form['container' . $order_num]['row_2_closed']['#markup'] = '</div>'; // Close second row
 
   $form['container' . $order_num]['equip_state'] = array(
 	'#type' => 'fieldset',
@@ -357,7 +451,7 @@ function checklist_inspections_archive_form($form, &$form_state, $args) {
 	'#cols' => 100,
   );
 
-  $form['container' . $order_num]['admin']['row_4_open']['#markup'] = '<div class="row">';
+//  $form['container' . $order_num]['admin']['row_4_open']['#markup'] = '<div class="row">';
 
 
   $form['container' . $order_num]['admin']['admin_approver'] = array(
@@ -371,12 +465,12 @@ function checklist_inspections_archive_form($form, &$form_state, $args) {
 
 
   $form['container' . $order_num]['admin']['cancel'] = array(
-	'#markup' => '<div><span value="' . $order_num . '"  class="cancel-btn-val">Cancel</span></div>',
+	'#markup' => '<span value="' . $order_num . '"  class="cancel-btn-val">Hide Form</span>',
 	'#prefix' => '<div class="cancel-button">',
 	'#suffix' => '</div>',
   );
 
-  $form['container' . $order_num]['admin']['row_4_closed']['#markup'] = '</div>';
+//  $form['container' . $order_num]['admin']['row_4_closed']['#markup'] = '</div>';
 
 
   return $form;

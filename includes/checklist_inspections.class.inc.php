@@ -107,27 +107,55 @@ class ChecklistInspections {
   }
 
   // Get the data we need for the checklist archive page
-  public function get_completed_checklist_data($order = NULL) {
+  public function get_all_completed_checklist_data() {
 
-    $results = array();
     $completed_inspect_data = array();
 
-    if($order === NULL) {
       $query = db_select('checklist_inspections', 'c')
         ->fields('c', array('order_num','category','unit_id','nid', 'admin_notes', 'admin_approver',
           'approved','inspected_by','repair_archive','date_submitted','follow_up_alert','comments'))
         ->condition('approved', 'approved')
         ->condition('completed', 'completed');
-      $results = $query->execute();
-    } else {
-      $query = db_select('checklist_inspections', 'c')
-        ->fields('c', array('order_num','category','unit_id','nid', 'admin_notes', 'admin_approver',
-          'approved','inspected_by','repair_archive','date_submitted','follow_up_alert','comments'))
-        ->condition('approved', 'approved')
-        ->condition('completed', 'completed')
-        ->condition('order_num', $order);
-      $results = $query->execute();
+        $results = $query->execute();
+
+    foreach ($results as $val) {
+      $completed_inspect_data[] = (array) $val;
     }
+    return $completed_inspect_data;
+  }
+
+  // Get the data we need for the checklist archive page
+  public function get_completed_checklist_data($unit_id) {
+
+    $completed_inspect_data = array();
+
+    $query = db_select('checklist_inspections', 'c')
+      ->fields('c', array('order_num','category','unit_id','nid', 'admin_notes', 'admin_approver',
+                          'approved','inspected_by','repair_archive','date_submitted','follow_up_alert','comments'))
+      ->condition('approved', 'approved')
+      ->condition('completed', 'completed')
+      ->condition('unit_id', $unit_id);
+
+    $results = $query->execute();
+
+    foreach ($results as $val) {
+      $completed_inspect_data[] = (array) $val;
+    }
+    return $completed_inspect_data;
+  }
+
+  // Get the data we need for the checklist archive Print page
+  public function get_selected_completed_checklist_data($order = NULL) {
+    $completed_inspect_data = array();
+
+    $query = db_select('checklist_inspections', 'c')
+      ->fields('c', array('order_num','category','unit_id','nid', 'admin_notes', 'admin_approver',
+                          'approved','inspected_by','repair_archive','date_submitted','follow_up_alert','comments'))
+      ->condition('approved', 'approved')
+      ->condition('completed', 'completed')
+      ->condition('order_num', $order);
+    $results = $query->execute();
+
     foreach ($results as $val) {
       $completed_inspect_data[] = (array) $val;
     }
@@ -135,32 +163,5 @@ class ChecklistInspections {
   }
 
 
-//  public function get_checklist_modal_data($order) {
-//
-//    $query = db_select('checklist_inspections', 'c')
-//      ->fields('c', array('repair_data'))
-//      ->condition('order_num', $order);
-//    $approval_data = $query->execute()->fetchField();
-//
-//    return $approval_data;
-//  }
 }
-  
-  // Get all Unit_ID values for select field
-//  public function unit_id_value() {
-//    $unit_id_select_options = array();
-//
-//    $query = db_select('node', 'n');
-//    $results = $query
-//      ->fields('n', array('title','type', 'nid'))
-//      ->condition('type', 'rental_product')
-//      ->execute();
-//
-//    foreach($results as $value) {
-//      $unit_id_select_options[$value->nid] = $value->title;
-//    }
-//
-//    return $unit_id_select_options;
-//  }
 
-//}
