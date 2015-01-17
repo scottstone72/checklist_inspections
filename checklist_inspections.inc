@@ -28,9 +28,9 @@ function checklist_inspect_form($form, &$form_state) {
   global $user;
   $checklist_obj = new ChecklistInspections(); // Get repair order object.
 
-  $equip_category = $checklist_obj->get_equipment_categories();
+//  $equip_category = $checklist_obj->get_equipment_categories();
   $order_num = $checklist_obj->check_inspect_order_num();
-  $form = array();
+
   $form = array('#id' => 'checklist-inspect-form');
   // Add some text
   $form['user_message'] = array(
@@ -59,23 +59,25 @@ function checklist_inspect_form($form, &$form_state) {
     '#value' => date('F d, Y'),
     '#size' => 25,
     '#disabled' => TRUE,
-//    '#id' => 'date-submitted',
+    //    '#id' => 'date-submitted',
     '#prefix' => '<div class="date-submitted" id="date-submitted-' . $order_num . '">',
     '#suffix' => '</div>',
   );
 
+  // Load the taxonomy terms
+  $categories = array();
+  $parents = taxonomy_get_tree(2, 0, 1, FALSE);
+
+  foreach ($parents as $k => $v) {
+    $categories[$v->tid] = $v->name;
+  }
+
+
   $form['container']['category'] = array(
     '#type' => 'select',
     '#title' => 'Equipment Category',
-    '#options' => drupal_map_assoc($equip_category),
+    '#options' => $categories,
     '#required' => TRUE,
-    //    '#attach' => drupal_add_js('
-    //        (function ($) {
-    //          $(document).ready(function () {
-    //            $("#edit-category :first-child").text("- Select Category -");
-    //          });
-    //        })(jQuery)',
-    //    'inline'),
     '#ajax' => array(
       'callback' => 'get_unit_id_select_callback',
       'wrapper' => 'unit_id_select_wrapper',
@@ -102,8 +104,25 @@ function checklist_inspect_form($form, &$form_state) {
     '#suffix' => '</div>',
   );
 
+  // If category was selected
   if ($category) {
+
+    // Get the node title for the ajax call
+    $nid_title = $checklist_obj->get_category_title($category);
+    UNSET($form_state['values']['node_title']); // Make sure array is empty
+
+    // Store nid title in form_state
+    $form['node_title'] = array(
+      '#type' => 'value',
+      '#value' => $nid_title,
+    );
+
+
+
+
+    // Pass term id's to function call
     $unit_id_select = $checklist_obj->set_select_options_list($category);
+
     // Save node id for saving to database
     $form['nid'] = array(
       '#type' => 'value',
@@ -115,13 +134,6 @@ function checklist_inspect_form($form, &$form_state) {
       '#type' => 'select',
       '#title' => 'Unit ID',
       '#options' => drupal_map_assoc($unit_id_select),
-      //      '#attach' => drupal_add_js('
-      //        (function ($) {
-      //          $(document).ready(function () {
-      //            $("#edit-unit-id-select :first-child").text("- Select Unit ID -");
-      //          });
-      //        })(jQuery)',
-      //        'inline'),
       '#required' => TRUE,
       '#ajax' => array(
         'callback' => 'get_unit_id_title_callback',
@@ -132,7 +144,10 @@ function checklist_inspect_form($form, &$form_state) {
       '#prefix' => '<div class="">',
       '#suffix' => '</div>',
     );
+
   }
+
+
 
   $form['container']['row_1_closed']['#suffix'] = '</div><div class="row">'; // Close the first row, Open second row
 
@@ -164,11 +179,18 @@ function checklist_inspect_form($form, &$form_state) {
     ),
   );
 
-
   if ($category && $unit_id) {
+
+//    dsm($unit_id);
+//
+//    $form['unit_id_selected'] = array(
+//      '#type' => 'value',
+//      '#value' => $unit_id,
+//    );
 
     $category_obj = new ChecklistCategories();
     $category_list = $category_obj->build_category_list($category);
+
     $rows = array();
     $repair_states = array();
 
@@ -294,6 +316,81 @@ function checklist_inspect_form($form, &$form_state) {
           $is_true = TRUE;
           break;
         case 'window_wipers_washer':
+          $is_true = TRUE;
+          break;
+        case 'pvc':
+          $is_true = TRUE;
+          break;
+        case 'consumables_couplers':
+          $is_true = TRUE;
+          break;
+        case 'elbows':
+          $is_true = TRUE;
+          break;
+        case 'duct_tape':
+          $is_true = TRUE;
+          break;
+        case 'zip_ties':
+          $is_true = TRUE;
+          break;
+        case 'slings_tarp_straps':
+          $is_true = TRUE;
+          break;
+        case 'overall_condition_8dc':
+          $is_true = TRUE;
+          break;
+        case 'threads_8dc':
+          $is_true = TRUE;
+          break;
+        case 'overall_condition_5dc':
+          $is_true = TRUE;
+          break;
+        case 'ambient_temp':
+          $is_true = TRUE;
+          break;
+        case 'oil_level_gen':
+          $is_true = TRUE;
+          break;
+        case 'heaters':
+          $is_true = TRUE;
+          break;
+        case 'belts':
+          $is_true = TRUE;
+          break;
+        case 'battery_charger':
+          $is_true = TRUE;
+          break;
+        case 'battery_levels_cables':
+          $is_true = TRUE;
+          break;
+        case 'leaks':
+          $is_true = TRUE;
+          break;
+        case 'amp':
+          $is_true = TRUE;
+          break;
+        case 'volts':
+          $is_true = TRUE;
+          break;
+        case 'freq':
+          $is_true = TRUE;
+          break;
+        case 'oil_pressure':
+          $is_true = TRUE;
+          break;
+        case 'water_temp':
+          $is_true = TRUE;
+          break;
+        case 'bc_amp':
+          $is_true = TRUE;
+          break;
+        case 'rtm':
+          $is_true = TRUE;
+          break;
+        case 'ats':
+          $is_true = TRUE;
+          break;
+        case 'mechanic':
           $is_true = TRUE;
           break;
         default;
@@ -478,12 +575,13 @@ function checklist_inspect_form_submit($form, &$form_state) {
 }
 
 /**
- * Ajax callback for getting and setting the Unit Id for the title
+ * Ajax callback for getting and setting the Unit Id title
  */
 function get_unit_id_title_callback($form, &$form_state) {
 
   $commands = array();
   $unit_id_title = $form_state['values']['unit_id_select'];
+
   $commands[] = ajax_command_replace('#unit_id_title_wrapper', drupal_render($form['container']['unit_id_title']));
   $commands[] = ajax_command_remove('#unit_id_title');
   $commands[] = ajax_command_append('#heading', '<h3 id="unit_id_title">' . $unit_id_title . '</h3>');
@@ -505,7 +603,8 @@ function get_unit_id_title_callback($form, &$form_state) {
 function get_unit_id_select_callback($form, &$form_state) {
 
   $commands = array();
-  $heading = $form_state['values']['category'];
+  $heading = $form_state['values']['node_title'];
+
 
   $commands[] = ajax_command_replace('#unit_id_select_wrapper', drupal_render($form['container']['category_wrapper']));
   // This will clear the State of Repair field if user re-choices another Category

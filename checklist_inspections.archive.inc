@@ -51,8 +51,13 @@ function checklist_inspections_archive_main_form($form, &$form_state) {
 
   $form['explain_text'] = array(
 	'#type' => 'markup',
-	'#markup' => "<div class='repair-message'><p>Make a selection
-      to bring up a table with the Checklist Inspection history for the Unit ID then click <strong>View Details</strong> to see each order.</p></div>",
+	'#markup' => "<details><summary>View Instructions - Completed Checklist Inspections show the original State of Repair at time of Approval Submission.</summary>
+      <div class='repair-message'>
+      <ul>
+          <li>Click <span class='color-word'>Show Details</span> to view Checklist Inspection.</li>
+          <li>Click <span class='color-word'>Print Preview</span> to view Checklist Inspection and then click <span class='color-word'>Print Page</span> for a printed copy.</li>
+      </ul>
+      </div></details>",
   );
 
   // Get our values for our Unit Id select dropdown
@@ -393,6 +398,81 @@ function checklist_inspections_archive_form($form, &$form_state, $args) {
 		  $is_true = TRUE;
 		  break;
 		case 'window_wipers_washer':
+		  $is_true = TRUE;
+		  break;
+		case 'pvc':
+		  $is_true = TRUE;
+		  break;
+		case 'consumables_couplers':
+		  $is_true = TRUE;
+		  break;
+		case 'elbows':
+		  $is_true = TRUE;
+		  break;
+		case 'duct_tape':
+		  $is_true = TRUE;
+		  break;
+		case 'zip_ties':
+		  $is_true = TRUE;
+		  break;
+		case 'slings_tarp_straps':
+		  $is_true = TRUE;
+		  break;
+		case 'overall_condition_8dc':
+		  $is_true = TRUE;
+		  break;
+		case 'threads_8dc':
+		  $is_true = TRUE;
+		  break;
+		case 'overall_condition_5dc':
+		  $is_true = TRUE;
+		  break;
+		case 'ambient_temp':
+		  $is_true = TRUE;
+		  break;
+		case 'oil_level_gen':
+		  $is_true = TRUE;
+		  break;
+		case 'heaters':
+		  $is_true = TRUE;
+		  break;
+		case 'belts':
+		  $is_true = TRUE;
+		  break;
+		case 'battery_charger':
+		  $is_true = TRUE;
+		  break;
+		case 'battery_levels_cables':
+		  $is_true = TRUE;
+		  break;
+		case 'leaks':
+		  $is_true = TRUE;
+		  break;
+		case 'amp':
+		  $is_true = TRUE;
+		  break;
+		case 'volts':
+		  $is_true = TRUE;
+		  break;
+		case 'freq':
+		  $is_true = TRUE;
+		  break;
+		case 'oil_pressure':
+		  $is_true = TRUE;
+		  break;
+		case 'water_temp':
+		  $is_true = TRUE;
+		  break;
+		case 'bc_amp':
+		  $is_true = TRUE;
+		  break;
+		case 'rtm':
+		  $is_true = TRUE;
+		  break;
+		case 'ats':
+		  $is_true = TRUE;
+		  break;
+		case 'mechanic':
 		  $is_true = TRUE;
 		  break;
 		default;

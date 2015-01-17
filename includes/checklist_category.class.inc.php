@@ -4,17 +4,14 @@ class ChecklistCategories {
 
   function build_category_list($category = NULL) {
 
-    if(($category === '2" Trash Pumps') || ($category === '4" Trash Pumps') || ($category ==='Flygt Pump')) {
-      $category = '2" Trash Pumps';
-    }
 
-    if(($category === '8x40 Rig Mats') || ($category === '8x20 Rig Mats')) {
-      $category = 'Rig Matting';
+    if(($category === '22')) { // Flygt Pumps
+      $category = '23'; // Trash Pumps
     }
 
     switch ($category) {
       // Build the row of checkboxes
-      case '2" Trash Pumps':
+      case '23': // Trash Pumps
         $cat_list = array(
           'title' => array(
             'cleanliness' => t('Cleanliness >  OverAll Condition'),
@@ -59,7 +56,7 @@ class ChecklistCategories {
         );
         break;
 
-      case 'Shale Bins':
+      case '16': // Shale Bins
         $cat_list = array(
           'title' => array(
             'cleanliness' => t('Cleanliness >  OverAll Condition'),
@@ -87,7 +84,7 @@ class ChecklistCategories {
         );
         break;
 
-      case 'Floc Tanks':
+      case '4': // Floc Tanks
         $cat_list = array(
           'title' => array(
             'cleanliness' => t('Cleanliness >  OverAll Condition'),
@@ -128,7 +125,7 @@ class ChecklistCategories {
       );
         break;
 
-      case 'Flare Tanks':
+      case '5': // Flare Tanks
         $cat_list = array(
           'title' => array(
             'cleanliness' => t('Cleanliness >  OverAll Condition'),
@@ -169,7 +166,7 @@ class ChecklistCategories {
       );
         break;
 
-      case 'Bop Spools':
+      case '6': // Bop Spools
         $cat_list = array(
           'title' => array(
             'cleanliness' => t('Cleanliness >  OverAll Condition'),
@@ -195,7 +192,7 @@ class ChecklistCategories {
         );
         break;
 
-      case 'Bail Extensions':
+      case '8': // Bail Extensions
         $cat_list = array(
           'title' => array(
             'cleanliness' => t('Cleanliness >  OverAll Condition'),
@@ -217,7 +214,7 @@ class ChecklistCategories {
         );
         break;
 
-      case '400BBL Tanks':
+      case '9': // 400BBL Tanks
         $cat_list = array(
           'title' => array(
             'cleanliness' => t('Cleanliness >  OverAll Condition'),
@@ -254,7 +251,7 @@ class ChecklistCategories {
           ),
         );
         break;
-      case 'Pipe Racks':
+      case '10': // Pipe Racks
         $cat_list = array(
           'title' => array(
             'cleanliness' => t('Cleanliness >  OverAll Condition'),
@@ -276,7 +273,7 @@ class ChecklistCategories {
         );
         break;
 
-      case 'Loaders':
+      case '12': // Loaders
         $cat_list = array(
           'title' => array(
             'tires_chains_lug_stem' => t('Tires / Tire Chains / Lug Nuts / Stem Caps '),
@@ -355,7 +352,7 @@ class ChecklistCategories {
         );
         break;
 
-      case 'Rig Matting':
+      case '13': // Rig Matting
         $cat_list = array(
           'title' => array(
             'cleanliness' => t('Cleanliness >  OverAll Condition'),
@@ -375,7 +372,7 @@ class ChecklistCategories {
         );
         break;
 
-      case 'Light Towers':
+      case '14': // Light Towers
         $cat_list = array(
           'title' => array(
             'cleanliness' => t('Cleanliness >  OverAll Condition'),
@@ -439,7 +436,7 @@ class ChecklistCategories {
         );
         break;
 
-      case 'Pre-Mix Tanks':
+      case '15': // Pre-Mix Tanks
         $cat_list = array(
           'title' => array(
             'cleanliness' => t('Cleanliness  >  OverAll Condition'),
@@ -509,6 +506,216 @@ class ChecklistCategories {
 //          ),
 //        );
 //        break;
+
+      case '19': // Centrifuge Package
+        $cat_list = array(
+          'title' => array(
+            'stand' => t('STAND > Overall Condition '), // Title
+            'welds' => t('Welds '),
+            'skid' => t('Skid '),
+            'hand_rails' => t('Hand Rails '),
+            'stairs' => t('Stairs '),
+            'walkways' => t('Walkways '),
+            'winches' => t('Winches '),
+            'slide' => t('Slide '),
+            'lockdowns' => t('Lockdowns '),
+            'cord_arm' => t('Cord Arm '),
+            'hyd_system' => t('HYD. SYSTEM > Leaks '), // Title
+            'hoses_fittings' => t('Hoses & Fittings '),
+            'rams' => t('Rams '),
+            'pins' => t('Pins '),
+            'fluid_level' => t('Fluid Level '),
+            'filter' => t('Filter '),
+            'valves' => t('Valves '),
+            'pump_motor' => t('Pump & Motor '),
+            'pressure_gauge' => t('Pressure Gauge '),
+            'pump' => t('PUMP '), // Title
+            'guard' => t('Guard '),
+            'rotation' => t('Rotation '),
+            'motor' => t('Motor '),
+            'fittings' => t('Fittings '),
+            'hoses' => t('Hoses '),
+            'belts_sheaves' => t('Belts & Sheaves '),
+            'valves_drain' => t('Valves & Drain '),
+            'rotating_assm' => t('Rotating Assm '),
+            'oil' => t('Oil '),
+            'electrical' => t('ELECTRICAL '), // Title
+            'cords' => t('Cords '),
+            'connector' => t('Connector '),
+            'glands' => t('Glands '),
+            'panel' => t('Panel > General Condition '),
+            'centrifuge' => t('CENTRIFUGE '), // Title
+            'centrifuge_fittings' => t('Fittings '),
+            'vibration_dampness' => t('Vibration Dampness '),
+            'cover' => t('Cover '),
+            'hinges' => t('Hinges '),
+            'centrifuge_motors' => t('Motors '),
+            'belts' => t('Belts '),
+            'couplers' => t('Couplers '),
+            'wear_components' => t('Wear Components '),
+            'feed_tube' => t('Feed Tube '),
+            'ponds' => t('Ponds '),
+            'grease' => t('Grease '),
+            'bearings' => t('Bearings '),
+            'gear_box_oil' => t('Gear Box Oil '),
+            'sensors' => t('Sensors '),
+            'sensor_cables' => t('Sensor Cables '),
+            'discharge_chute' => t('Discharge Chute '),
+            'overflow' => t('Over Flow '),
+            'job_box' => t('JOB BOX '),
+            'inventory' => t('Inventory '),
+            'locked' => t('Locked '),
+            'consumables' => t('CONSUMABLES '),
+            'pvc' => t('PVC '),
+            'consumables_couplers' => t('Couplers '),
+            'elbows' => t('Elbows '),
+            'duct_tape' => t('Duck Tape '),
+            'zip_ties' => t('Zip Ties '),
+            'slings_tarp_straps' => t('Slings / Tarp Straps '),
+          ),
+          'repair_state' => array(
+            'welds' => array('Cracks'),
+            'skid' => array('Damage', 'Cracks'),
+            'hand_rails' => array('Installed'),
+            'stairs' => array('Damages'),
+            'walkways' => array('Damages'),
+            'winches' => array('Function'),
+            'slide' => array('Damage', 'Function'),
+            'lockdowns' => array('Damage', 'Installed', 'Tight'),
+            'cord_arm' => array('Function', 'Damage'),
+            'hoses_fittings' => array('Leaks Tight', 'Damage'),
+            'rams' => array('Straight', 'Level'),
+            'pins' => array('Worn', 'Installed'),
+            'fluid_level' => array('Cleanliness'),
+            'filter' => array('Leaks', 'Clean'),
+            'valves' => array('Leaks', 'Functioning'),
+            'pump_motor' => array('Rotation', 'Function'),
+            'pressure_gauge' => array('Installed', 'Functioning'),
+            'guard' => array('Installed'),
+            'rotation' => array('Rotating'),
+            'motor' => array('Wiring'),
+            'fittings' => array('Damage', 'Wear'),
+            'hoses' => array('Damage', 'Wear'),
+            'belts_sheaves' => array('Tight', 'Wear'),
+            'valves_drain' => array('Function', 'Leaks'),
+            'rotating_assm' => array('Wear', 'Seals', 'Damage'),
+            'oil' => array('Level', 'Cleanliness'),
+            'cords' => array('Damage'),
+            'connector' => array('Damage - Tight', 'Wear'),
+            'glands' => array('Tight', 'Inserted'),
+            'panel' => array('Seals-function', 'Leaks', 'Locks', 'Cleanliness', 'Switches-function', 'Lights-function'),
+            'centrifuge_fittings' => array('Damage', 'Wear'),
+            'vibration_dampness' => array('Damage', 'Wear'),
+            'cover' => array('Damage', 'Tight', 'Seals'),
+            'hinges' => array('Function'),
+            'centrifuge_motors' => array('Noise', 'Grease', 'Secure'),
+            'belts' => array('Tight', 'Wear', 'Alignment'),
+            'couplers' => array('Tight', 'Wear'),
+            'wear_components' => array('Worn', 'Damage'),
+            'feed_tube' => array('Worn', 'Damage', 'Tight'),
+            'ponds' => array('Setting', 'Tight'),
+            'grease' => array('Scheduled Service'),
+            'bearings' => array('Noise', 'Temp'),
+            'gear_box_oil' => array('Level', 'Cleanliness', 'Temp'),
+            'sensors' => array('Installed', 'Tight'),
+            'sensor_cables' => array('Tight', 'Damage'),
+            'discharge_chute' => array('Installed', 'Damage'),
+            'overflow' => array('Installed', 'Damage', 'Leaks'),
+            'inventory' => array('Inventory'),
+            'locked' => array('Locked'),
+          ),
+        );
+        break;
+
+      case '17': // 8" DC and sub package
+        $cat_list = array(
+          'title' => array(
+            'overall_condition_8dc' => t('Overall Condition '),
+            'threads_8dc' => t('Threads '),
+          ),
+          'repair_state' => array(
+            'threads_8dc' => array('Damage', 'Wear'),
+          ),
+        );
+        break;
+      case '18': // 5" Sub Package
+        $cat_list = array(
+          'title' => array(
+            'inventory' => t('Package Complete '),
+            'overall_condition_5dc' => t('Overall Condition '),
+          ),
+          'repair_state' => array(
+            'overall_condition_5dc' => array('Damage', 'Wear'),
+          ),
+        );
+        break;
+      case '24': // Generators
+        $cat_list = array(
+          'title' => array(
+            'ambient_temp' => t('Ambient Temp '),
+            'oil_level_gen' => t('Oil Level '),
+            'heaters' => t('Heaters '),
+            'belts' => t('Belts '),
+            'battery_charger' => t('Battery Charger '),
+            'battery_levels_cables' => t('Battery Levels & Cables '),
+            'leaks' => t('Leaks '),
+            'amp' => t('Amp '),
+            'volts' => t('Volts '),
+            'freq' => t('Freq '),
+            'oil_pressure' => t('Oil Pressure '),
+            'water_temp' => t('Water Temp '),
+            'bc_amp' => t('BC Amp '),
+            'rtm' => t('RTM '),
+            'ats' => t('ATS '),
+            'mechanic' => t('Mechanic '),
+          ),
+          'repair_state' => array(
+            'leaks' => array('Oil', 'Water', 'Fuel'),
+          ),
+        );
+        break;
+
+      case '26': // Generators
+        $cat_list = array(
+          'title' => array(
+            'cleanliness' => t('Cleanliness > Overall Condition'),
+            'damages' => t('Damages '),
+            'welds' => t('Welds '),
+            'skid' => t('Skid '),
+            'hammer_unions' => t('Hammer Unions '),
+            'aggitators_motors' => t('Aggitators / Motors '),
+            'gear_box' => t('Gear Box '),
+            'injection_pumps' => t('Injection Pumps '),
+            'electrical' => t('Electrical '),
+            'vfd' => t('VFD '),
+            'cam_locks' => t('Cam Locks '),
+            'valves' => t('Valves '),
+            'hosing' => t('Hosing '),
+            'lights' => t('Lights '),
+            'paint' => t('Paint '),
+            'decals' => t('Decals '),
+            'sn' => t('SN # '),
+          ),
+          'repair_state' => array(
+            'damages' => array('Damage', 'Wear'),
+            'welds' => array('Damage', 'Cracks', 'Leaks'),
+            'skid' => array('Wear', 'Damage', 'Cracks'),
+            'hammer_unions' => array('Function', 'Wear', 'Damage'),
+            'aggitators_motors' => array('Function', 'Damage', 'Rotation'),
+            'gear_box' => array('Oil Level', 'Leaks', 'Wear'),
+            'injection_pumps' => array('Rotation', 'Function', 'Drain'),
+            'electrical' => array('Function', 'Damage', 'Wiring'),
+            'vfd' => array('Function', 'Sealed'),
+            'cam_locks' => array('Handles', 'Gaskets'),
+            'valves' => array('Leaks', 'Handles'),
+            'hosing' => array( 'Inventoried', 'Installed'),
+            'lights' => array('Function', 'Damage'),
+            'paint' => array('Damage', 'Cleanliness'),
+            'decals' => array('Damage', 'Installed'),
+            'sn' => array('Installed', 'Visible'),
+          ),
+        );
+        break;
 
       default:
         $cat_list = 'No Checklist Inspection Form has been created for this equipment category.';

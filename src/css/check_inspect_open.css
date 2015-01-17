@@ -6138,6 +6138,12 @@ button.close {
     display: none !important;
   }
 }
+details {
+  padding-bottom: 20px;
+}
+details span.color-word {
+  color: #d36a00;
+}
 form .approval-fieldset.panel.panel-default {
   border: 3px solid #ffffff;
 }

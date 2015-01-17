@@ -17,18 +17,31 @@ function checklist_inspections_open_page() {
 
   $build['explain_text'] = array(
     '#type' => 'markup',
-    '#markup' => '<p>This page lists all Open Checklist Inspection forms.
-    Click the \'Show Details\' link to edit Checklist Inspection data and save as \'Completed\' when all checkboxes are set to \'Satisfactory\'. </p>'
+    '#markup' => "<details><summary>View Instructions</summary>
+      <div class='repair-message'>
+      <ul>
+          <li>Click <span class='color-word'>Show Details</span> to view Checklist Inspection.</li>
+          <li>Edit form and click update to save Checklist Inspection State.</li>
+          <li>Once each Checklist Inspection has been completed, click the <span class='color-word'>Complete Inspection</span>  button to submit as a completed inspection.</li>
+      </ul>
+      </div></details>",
   );
 
   $repair_data = array();
+  if(!empty($checklist_data)) {
 
-  foreach($checklist_data as $key => $val) {
-    $build[] = drupal_get_form('checklist_inspections_open_form_' . $val['order_num'], $val);
+    foreach($checklist_data as $key => $val) {
+      $build[] = drupal_get_form('checklist_inspections_open_form_' . $val['order_num'], $val);
 
-    // Unserialize to prepare for js.
-    // + operator is a union for arrays, preserves array keys if there are no duplicates else will override.
-    $repair_data = $repair_data + unserialize($val['repair_data']);
+      // Unserialize to prepare for js.
+      // + operator is a union for arrays, preserves array keys if there are no duplicates else will override.
+      $repair_data = $repair_data + unserialize($val['repair_data']);
+    }
+  } else {
+    $build['no_val'] = array(
+      '#type' => 'markup',
+      '#markup' => '<div>- There are no Open Checklist Inspections at this time.</div>',
+    );
   }
 
   // Hand over to javascript.
@@ -313,6 +326,81 @@ function checklist_inspections_open_form($form, &$form_state, $args) {
           $is_true = TRUE;
           break;
         case 'window_wipers_washer':
+          $is_true = TRUE;
+          break;
+        case 'pvc':
+          $is_true = TRUE;
+          break;
+        case 'consumables_couplers':
+          $is_true = TRUE;
+          break;
+        case 'elbows':
+          $is_true = TRUE;
+          break;
+        case 'duct_tape':
+          $is_true = TRUE;
+          break;
+        case 'zip_ties':
+          $is_true = TRUE;
+          break;
+        case 'slings_tarp_straps':
+          $is_true = TRUE;
+          break;
+        case 'overall_condition_8dc':
+          $is_true = TRUE;
+          break;
+        case 'threads_8dc':
+          $is_true = TRUE;
+          break;
+        case 'overall_condition_5dc':
+          $is_true = TRUE;
+          break;
+        case 'ambient_temp':
+          $is_true = TRUE;
+          break;
+        case 'oil_level_gen':
+          $is_true = TRUE;
+          break;
+        case 'heaters':
+          $is_true = TRUE;
+          break;
+        case 'belts':
+          $is_true = TRUE;
+          break;
+        case 'battery_charger':
+          $is_true = TRUE;
+          break;
+        case 'battery_levels_cables':
+          $is_true = TRUE;
+          break;
+        case 'leaks':
+          $is_true = TRUE;
+          break;
+        case 'amp':
+          $is_true = TRUE;
+          break;
+        case 'volts':
+          $is_true = TRUE;
+          break;
+        case 'freq':
+          $is_true = TRUE;
+          break;
+        case 'oil_pressure':
+          $is_true = TRUE;
+          break;
+        case 'water_temp':
+          $is_true = TRUE;
+          break;
+        case 'bc_amp':
+          $is_true = TRUE;
+          break;
+        case 'rtm':
+          $is_true = TRUE;
+          break;
+        case 'ats':
+          $is_true = TRUE;
+          break;
+        case 'mechanic':
           $is_true = TRUE;
           break;
         default;

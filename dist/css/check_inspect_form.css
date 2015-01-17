@@ -6139,12 +6139,25 @@ button.close {
   padding-top: 5px;
 }
 #checklist-inspect-form .ratings-container .text-box {
+  float: right !important;
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
   margin-bottom: 2px;
   margin-left: 10px;
+}
+@media (min-width: 768px) {
+  #checklist-inspect-form .ratings-container .text-box {
+    float: left;
+    width: 50%;
+  }
+}
+@media (min-width: 992px) {
+  #checklist-inspect-form .ratings-container .text-box {
+    float: left;
+    width: 50%;
+  }
 }
 @media (min-width: 1200px) {
   #checklist-inspect-form .ratings-container .text-box {
@@ -6155,6 +6168,9 @@ button.close {
 #checklist-inspect-form .ratings-container .radio-buttons {
   padding-left: 20px;
   padding-bottom: 5px;
+}
+#checklist-inspect-form .ratings-container .damage-buttons {
+  margin-left: 15px;
 }
 #checklist-inspect-form fieldset#edit-container {
   border: none;

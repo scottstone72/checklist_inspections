@@ -6,13 +6,13 @@
 function checklist_inspections_permission() {
   return array(
     'view checklist inspections approvals page' => array(
-      'title' => t('Access Checklist Inspections'),
-      'description' => t('Access to the checklist inspections form.'),
+      'title' => t('Access Approvals Page'),
+      'description' => t('Access the Checklist Inspections Approvals Page.'),
       'restrict access' => TRUE,
     ),
     'view checklist inspections' => array(
-      'title' => t('Access Checklist Inspections'),
-      'description' => t('Access to the checklist inspections form.'),
+      'title' => t('Access Form, Open, and Archived Inspections Pages.'),
+      'description' => t('Access Checklist Inspections Form, Open Inspections, and Archived Inspections Pages.'),
       'restrict access' => TRUE,
     ),
   );

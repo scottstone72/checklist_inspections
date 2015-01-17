@@ -218,6 +218,81 @@ function checklist_open_callback_print($args) {
 		  case 'window_wipers_washer':
 			$is_true = TRUE;
 			break;
+		  case 'pvc':
+			$is_true = TRUE;
+			break;
+		  case 'consumables_couplers':
+			$is_true = TRUE;
+			break;
+		  case 'elbows':
+			$is_true = TRUE;
+			break;
+		  case 'duct_tape':
+			$is_true = TRUE;
+			break;
+		  case 'zip_ties':
+			$is_true = TRUE;
+			break;
+		  case 'slings_tarp_straps':
+			$is_true = TRUE;
+			break;
+		  case 'overall_condition_8dc':
+			$is_true = TRUE;
+			break;
+		  case 'threads_8dc':
+			$is_true = TRUE;
+			break;
+		  case 'overall_condition_5dc':
+			$is_true = TRUE;
+			break;
+		  case 'ambient_temp':
+			$is_true = TRUE;
+			break;
+		  case 'oil_level_gen':
+			$is_true = TRUE;
+			break;
+		  case 'heaters':
+			$is_true = TRUE;
+			break;
+		  case 'belts':
+			$is_true = TRUE;
+			break;
+		  case 'battery_charger':
+			$is_true = TRUE;
+			break;
+		  case 'battery_levels_cables':
+			$is_true = TRUE;
+			break;
+		  case 'leaks':
+			$is_true = TRUE;
+			break;
+		  case 'amp':
+			$is_true = TRUE;
+			break;
+		  case 'volts':
+			$is_true = TRUE;
+			break;
+		  case 'freq':
+			$is_true = TRUE;
+			break;
+		  case 'oil_pressure':
+			$is_true = TRUE;
+			break;
+		  case 'water_temp':
+			$is_true = TRUE;
+			break;
+		  case 'bc_amp':
+			$is_true = TRUE;
+			break;
+		  case 'rtm':
+			$is_true = TRUE;
+			break;
+		  case 'ats':
+			$is_true = TRUE;
+			break;
+		  case 'mechanic':
+			$is_true = TRUE;
+			break;
 		  default;
 		}
 

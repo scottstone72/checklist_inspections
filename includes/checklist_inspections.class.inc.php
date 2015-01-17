@@ -3,43 +3,52 @@
 class ChecklistInspections {
 
   // This call to database is for getting all the equipment categories.
-  public function get_equipment_categories(){
-    $categories = array();
-//    $equip_categories = array();
+//  public function get_equipment_categories(){
+//    $categories = array();
+////    $equip_categories = array();
+//
+//    $query = db_select('field_data_field_unit_type_', 'f');
+//    $query->join('taxonomy_term_data', 't', 'f.field_unit_type__tid = t.tid');
+//    $query->groupBy('f.entity_id');
+//    $results = $query
+//      ->fields('t', array('name'))
+//      ->execute()->fetchCol();
+//
+//    foreach($results as $value) {
+//      $categories[] = $value;
+//    }
+//    // We need to get rid of duplicate values in table column.
+//    $equip_categories = array_unique($categories);
+//    return $equip_categories;
+//  }
 
-    $query = db_select('field_data_field_unit_type_', 'f');
-    $query->join('taxonomy_term_data', 't', 'f.field_unit_type__tid = t.tid');
-    $query->groupBy('f.entity_id');
-    $results = $query
-      ->fields('t', array('name'))
-      ->execute()->fetchCol();
+  // Get the title of the category selected
+  public function get_category_title($tid) {
 
-    foreach($results as $value) {
-      $categories[] = $value;
-    }
-    // We need to get rid of duplicate values in table column.
-    $equip_categories = array_unique($categories);
-    return $equip_categories;
+    $query = db_select('taxonomy_term_data', 't');
+    $query->fields('t', array('name'));
+    $query->condition('tid', $tid);
+    $result = $query->execute()->fetchField();
+
+    return $result;
+
   }
 
   // Populates the unit_id_select after user makes category selection.
-  public function set_select_options_list($category){
+  public function set_select_options_list($tid){
     $unit_id_select = array();
 
-    $query = db_select('node', 'n');
-    $query->join('field_data_field_unit_type_', 'f', 'n.nid = f.entity_id');
-    $query->groupBy('f.entity_id');
-    $query->join('taxonomy_term_data', 't', 'f.field_unit_type__tid = t.tid');
-    $query->groupBy('t.tid');
-    $query->fields('t', array('name'));
-    $query->fields('n', array('title','type', 'nid'));
-    $query->fields('f', array('field_unit_type__tid'));
-    $query->condition('t.name', $category);
-    $results = $query->execute();
+      $query = db_select('node', 'n');
+      $query->join('field_data_field_unit_type_', 'f', 'n.nid = f.entity_id');
+      $query->groupBy('f.entity_id');
+      $query->fields('n', array('title', 'type', 'nid'));
+      $query->fields('f', array('field_unit_type__tid'));
+      $query->condition('f.field_unit_type__tid', $tid);
+      $results = $query->execute();
 
-    foreach($results as $value) {
-      $unit_id_select[$value->nid] = $value->title;
-    }
+      foreach ($results as $value) {
+        $unit_id_select[$value->nid] = $value->title;
+      }
 
     return $unit_id_select;
   }
