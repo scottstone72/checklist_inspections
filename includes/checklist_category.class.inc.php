@@ -5,13 +5,13 @@ class ChecklistCategories {
   function build_category_list($category = NULL) {
 
 
-    if(($category === '22')) { // Flygt Pumps
-      $category = '23'; // Trash Pumps
+    if(($category === '23')) { // Flygt Pumps
+      $category = '21'; // Trash Pumps
     }
 
     switch ($category) {
       // Build the row of checkboxes
-      case '23': // Trash Pumps
+      case '21': // Trash Pumps
         $cat_list = array(
           'title' => array(
             'cleanliness' => t('Cleanliness >  OverAll Condition'),
@@ -649,7 +649,7 @@ class ChecklistCategories {
           ),
         );
         break;
-      case '24': // Generators
+      case '20': // Generators
         $cat_list = array(
           'title' => array(
             'ambient_temp' => t('Ambient Temp '),
@@ -675,7 +675,7 @@ class ChecklistCategories {
         );
         break;
 
-      case '26': // Polymer Tanks
+      case '22': // Polymer Tanks
         $cat_list = array(
           'title' => array(
             'cleanliness' => t('Cleanliness > Overall Condition'),
