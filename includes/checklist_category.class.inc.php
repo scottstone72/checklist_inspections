@@ -675,7 +675,7 @@ class ChecklistCategories {
         );
         break;
 
-      case '26': // Generators
+      case '26': // Polymer Tanks
         $cat_list = array(
           'title' => array(
             'cleanliness' => t('Cleanliness > Overall Condition'),
